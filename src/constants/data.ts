@@ -12,3 +12,5 @@ export const DEVELOPERS = [
     'github': 'https://github.com/danilahalm'
   },
 ]
+
+export let BOOK_PAGE_NUMBER = 1
