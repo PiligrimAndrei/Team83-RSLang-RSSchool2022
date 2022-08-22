@@ -67,6 +67,8 @@ export class SingInForm extends Component{
             ['linkToSingUp'],
             'Зарегистрируйтесь'
         )
+
+        this.linkToSingUp.element.addEventListener('click', changeAutorizationWindow())
     }
 
     

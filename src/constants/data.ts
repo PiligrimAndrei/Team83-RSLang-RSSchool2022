@@ -13,6 +13,7 @@ export const DEVELOPERS = [
   },
 ]
 
+
 export const ADVANTAGES_CARDS_CONTENT = [
   {
     heading: "Учебник",
@@ -33,3 +34,13 @@ export const ADVANTAGES_CARDS_CONTENT = [
     alt: "statisticsIco",
   },
 ]
+
+
+export let BOOK_PAGE_NUMBER = 1
+
+export let WORD_POPUP_CORRECT_COUNT = 0
+
+export let WORD_POPUP_ERROR_COUNT = 0
+
+
+

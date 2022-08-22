@@ -53,16 +53,16 @@ export class Header extends Component {
       ),
       this.linkToSignIn = new Component(
         this.navContainer.element,
-        'a',
+        'link',
         ['nav__item', 'nav__button'],
         'Вход',
       );
 
     this.linkToMain.element.setAttribute('href', '#/');
     this.linkToBook.element.setAttribute('href', '#/book');
-    this.linkToGames.element.setAttribute('href', '#/games');
+    this.linkToGames.element.setAttribute('href', '#/game_sprint');
     this.linkToStatics.element.setAttribute('href', '#/statics');
-    this.linkToSignIn.element.setAttribute('href', '#/about');
+    this.linkToSignIn.element.setAttribute('href', '#/autorization');
 
     this.navItems = [this.linkToMain, this.linkToBook, this.linkToGames, this.linkToStatics, this.linkToSignIn];
 
