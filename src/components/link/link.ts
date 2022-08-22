@@ -1,6 +1,7 @@
 import { Component } from '../../components/components';
 import './link.css'
 export class Link extends Component {
+    addEventListen: any;
     
     constructor(
         parentNode:HTMLElement,
