@@ -47,5 +47,10 @@
     "> 1%",
     "last 2 versions"
   ],
-  "homepage": "https://github.com/PiligrimAndrei/async-race#readme"
+  "homepage": "https://github.com/PiligrimAndrei/async-race#readme",
+  "dependencies": {
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/material": "^5.10.1"
+  }
 }

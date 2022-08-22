@@ -12,3 +12,4 @@ export const DEVELOPERS = [
     'github': 'https://github.com/danilahalm'
   },
 ]
+
