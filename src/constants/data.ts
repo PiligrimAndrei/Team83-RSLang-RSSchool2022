@@ -12,3 +12,5 @@ export const DEVELOPERS = [
     'github': 'https://github.com/danilahalm'
   },
 ]
+
+export const MAX_CARDS_ON_PAGE = 20;
