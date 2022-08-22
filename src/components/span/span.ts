@@ -4,6 +4,7 @@ export class Span extends Component {
     
     constructor(
         parentNode:HTMLElement,
+        styles: string[],
         content:string,
         ){
         super(parentNode, "span");
