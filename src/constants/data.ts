@@ -12,3 +12,8 @@ export const DEVELOPERS = [
     'github': 'https://github.com/danilahalm'
   },
 ]
+
+export let WORD_POPUP_CORRECT_COUNT = 0
+
+export let WORD_POPUP_ERROR_COUNT = 0
+
