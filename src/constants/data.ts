@@ -14,3 +14,6 @@ export const DEVELOPERS = [
 ]
 
 export const MAX_CARDS_ON_PAGE = 20;
+
+export const DIFFICULTIES = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
+
