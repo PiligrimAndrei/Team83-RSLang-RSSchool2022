@@ -13,7 +13,11 @@ export const DEVELOPERS = [
   },
 ]
 
+
+export let BOOK_PAGE_NUMBER = 1
+
 export let WORD_POPUP_CORRECT_COUNT = 0
 
 export let WORD_POPUP_ERROR_COUNT = 0
+
 
