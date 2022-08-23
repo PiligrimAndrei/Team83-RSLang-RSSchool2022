@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTXhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+  }
+  @font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+  }
+  @font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSnhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+  }
+
+
+:root {
+    --main-bg-color: #1E2128;
+    --main-text-color: #FFFFFF;
+    --second-text-color: #000000;
+    --accent-color: #97D9E9;
+
+    --color-a1: #63E1E7;
+    --color-a2: #00E2B5;
+    --color-b1: #6688FF;
+    --color-b2: #9747FF;
+    --color-c1: #FF8855;
+    --color-c2: #FF4C33;
+    --color-hard: #A21300;
+    --color-learned: #00944D;
+    --color-settings: #555555;
+
+
+
+    --accent-background: linear-gradient(to top, var(--main-color), white);
+    --main-font-family: 'Open Sans';
+    --font-size-l: 32px;
+    --font-size-m: 20px;
+    --font-size-s: 17px;
+    --font-size-xs: 15px;
+
+  }
+
