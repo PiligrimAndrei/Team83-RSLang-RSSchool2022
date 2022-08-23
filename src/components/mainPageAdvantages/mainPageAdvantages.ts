@@ -7,10 +7,11 @@ import { ADVANTAGES_CARDS_CONTENT } from "../../constants/data";
 export class MainPageAdvantages extends Component {
   private advantagesHeading: Heading;
   private advantagesCardContainer: Component;
-  private advantagesCard: Component;
-  private advantagesCardHeading: Heading;
-  private advatagesParagraph: Paragraph;
-  private advatagesImage: Image;
+  private advantagesCard: Component | undefined;
+  private advantagesCardHeading: Heading | undefined;
+  private advatagesParagraph: Paragraph | undefined;
+  private advatagesImage: Image | undefined;
+  
   constructor(parentNode: HTMLElement) {
     super(parentNode, "div", ["mainPageAdvantages"]);
 

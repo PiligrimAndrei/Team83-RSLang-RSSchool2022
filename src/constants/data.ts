@@ -48,5 +48,9 @@ export let WORD_POPUP_CORRECT_COUNT = 0
 
 export let WORD_POPUP_ERROR_COUNT = 0
 
+export const MAX_CARDS_ON_PAGE = 20
+
+export const DIFFICULTIES = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
+
 
 
