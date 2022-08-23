@@ -1,6 +1,7 @@
 import { Component } from '../components';
 import { Button } from '../button/button';
 import { DIFFICULTIES } from '../../constants/data';
+import './bookNavigation.css'
 
 export class BookNavigation extends Component {
     private hardWordsBtn: Button;
