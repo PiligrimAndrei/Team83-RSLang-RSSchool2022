@@ -1,5 +1,5 @@
 import { Component } from '../components';
-import './singInForm.css'
+import './singUpForm.css'
 import { Heading } from "../../components/heading/heading";
 import { Input } from "../../components/input/input";
 import { Link } from "../../components/link/link";
@@ -37,7 +37,7 @@ export class SingUpForm extends Component{
             'text',
             ['inputName'],
             'Имя',
-            true
+            'true'
         )
 
         this.inputEmail = new Input(
@@ -45,7 +45,7 @@ export class SingUpForm extends Component{
             'email',
             ['inputEmail'],
             'Логин',
-            false
+            'false'
         )
 
         this.inputPassword = new Input(
@@ -53,7 +53,7 @@ export class SingUpForm extends Component{
             'password',
             ['inputPassword'],
             'Пароль',
-            false
+            'false'
         )
 
         this.enterButton = new Button(
@@ -76,7 +76,6 @@ export class SingUpForm extends Component{
             'Войти'
         )
 
-        this.linkToSingIn.element.addEventListener('click', changeAutorizationWindow())
     }
 
     

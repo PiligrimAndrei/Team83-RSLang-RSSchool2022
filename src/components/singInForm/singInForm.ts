@@ -6,7 +6,6 @@ import { Input } from "../../components/input/input";
 import { Link } from "../../components/link/link";
 import { Paragraph } from "../../components/paragraph/paragraph";
 import { Form } from '../form/form';
-import { Button } from '../button/button';
 
 export class SingInForm extends Component{
     private formAutorization!: Form;
@@ -37,7 +36,7 @@ export class SingInForm extends Component{
             'email',
             ['inputEmail'],
             'Логин',
-            true
+            'true'
         )
 
         this.inputPassword = new Input(
@@ -45,7 +44,7 @@ export class SingInForm extends Component{
             'password',
             ['inputPassword'],
             'Пароль',
-            false
+            'false'
         )
 
         this.enterButton = new Button(
@@ -68,7 +67,6 @@ export class SingInForm extends Component{
             'Зарегистрируйтесь'
         )
 
-        this.linkToSingUp.element.addEventListener('click', changeAutorizationWindow())
     }
 
     
