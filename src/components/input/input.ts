@@ -7,7 +7,7 @@ export class Input extends Component {
         type:string,
         styles: string[] = [],
         placeholder:string,
-        autofocus: string = 'false'
+        autofocus: Boolean = false
         ){
         super(parentNode, 'input');
 
@@ -15,7 +15,7 @@ export class Input extends Component {
         this.element.setAttribute("placeholder",placeholder);
         this.element.classList.add(...styles);
         if(autofocus) {
-            this.element.setAttribute("autofocus", autofocus);
+            this.element.setAttribute("autofocus",autofocus);
         }
     }
 }

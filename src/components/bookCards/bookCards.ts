@@ -4,8 +4,6 @@ import { Word } from "../word/word"
 
 
 export class BookCards extends Component {
-    private cards: Cards;
-    private word: Word;
     constructor (parentNode: HTMLElement) {
         super(parentNode, 'div', ['bookCards']);
 

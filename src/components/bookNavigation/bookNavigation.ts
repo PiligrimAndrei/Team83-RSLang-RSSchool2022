@@ -6,7 +6,7 @@ export class BookNavigation extends Component {
     private hardWordsBtn: Button;
     private learnedWordsBtn: Button;
     private settingsBtn: Button;
-    private langLevelBtns: Button[];
+    private langLevelBtns: never[];
 
     constructor( parentNode: HTMLElement ){
         super(parentNode, 'div', ['bookNavigation']);

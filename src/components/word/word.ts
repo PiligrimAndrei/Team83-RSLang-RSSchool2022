@@ -103,7 +103,7 @@ export class Word extends Component {
         this.wordPronunciationImage = new Image(
             this.wordPronunciationContainer.element,
             ['wordPronunciationImage'],
-            './assets/wordPronunciation.svg',
+            './assets/wordPronunciation',
             'wordPronunciation'
         )
 
