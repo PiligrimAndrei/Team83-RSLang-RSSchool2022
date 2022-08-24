@@ -1,3 +1,9 @@
-@import '../../constants/root.css'
+@import '../../constants/root.css';
 
-
+.bookNavigation {
+    display: grid;
+    grid-template-columns: repeat(6, 125px);
+    grid-template-rows: repeat(2, 70px);
+    gap: 30px;
+    margin-bottom: 30px;
+}

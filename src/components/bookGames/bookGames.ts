@@ -1,5 +1,6 @@
 import { Component } from '../components';
 import { Link } from '../link/link';
+import './bookGames.css'
 
 export class BookGames extends Component{
     private gameContainer1: Component;

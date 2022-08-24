@@ -1,0 +1,71 @@
+@import '../../constants/root.css';
+
+button {
+    font-size: var(--font-size-s);
+    padding: 0;
+    border: none;
+}
+
+.hardWordsBtn{
+    grid-column: 1/3;
+    background-color: var(--color-card);
+}
+.hardWordsBtn:hover,
+.hardWordsBtn .active{
+    background-color: var(--color-hard);
+    color: var(--main-text-color);
+}
+
+.learnedWordsBtn{
+    grid-column: 3/5;
+    background-color: var(--color-card);
+}
+.learnedWordsBtn:hover,
+.learnedWordsBtn .active{
+    background-color: var(--color-learned);
+    color: var(--main-text-color);
+}
+
+.settingsBtn{
+    grid-column: 5/7;
+    background-color: var(--color-card);
+}
+.settingsBtn:hover,
+.settingsBtn .active{
+    background-color: var(--color-settings);
+    color: var(--main-text-color);
+}
+.langLevelBtnA1:hover,
+.langLevelBtnA1 .active {
+    background-color: var(--color-a1);
+    color: var(--main-text-color);
+}
+.langLevelBtnA2:hover,
+.langLevelBtnA2 .active {
+    background-color: var(--color-a2);
+    color: var(--main-text-color);
+}
+.langLevelBtnB1:hover,
+.langLevelBtnB1 .active {
+    background-color: var(--color-b1);
+    color: var(--main-text-color);
+}
+.langLevelBtnB2:hover,
+.langLevelBtnB2 .active {
+    background-color: var(--color-b2);
+    color: var(--main-text-color);
+}
+.langLevelBtnC1:hover,
+.langLevelBtnC1 .active {
+    background-color: var(--color-c1);
+    color: var(--main-text-color);
+}
+.langLevelBtnC2:hover,
+.langLevelBtnC2 .active {
+    background-color: var(--color-c2);
+    color: var(--main-text-color);
+}
+
+
+
+

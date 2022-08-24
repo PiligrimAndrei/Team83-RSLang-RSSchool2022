@@ -1,0 +1,87 @@
+@import '../../constants/root.css';
+
+.wordContainer {
+    margin-left: 30px;
+    width: 280px;
+    height: 720px;
+    background-color: var(--main-text-color);
+    display: flex;
+    flex-direction: column;
+}
+.wordImage {
+    height: 120px;
+    width: 280px;
+    margin-bottom: 10px;
+}
+.popupРintContainer {
+    display: none;
+}
+
+.trackerContainer{
+    width: auto;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.learnTracker1,
+.learnTracker2,
+.learnTracker3 {
+    background-color: var(--color-card);
+    width: 20px;
+    height: 20px;
+}
+.learnTracker2{
+    margin: 0 10px;
+}
+.wordName{
+    color: var(--second-text-color);
+    font-size: var(--font-size-s);
+    height: auto;
+    width: auto;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.wordPronunciationContainer{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+.wordTranscription {
+    color: var(--second-text-color);
+    font-size: var(--font-size-s);
+    height: auto;
+    width: auto;
+    text-align: center;
+    transform: translate(0, 25%);
+}
+.wordNameTranslation {
+    color: var(--second-text-color);
+    font-size: var(--font-size-s);
+    height: auto;
+    width: auto;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 22px;
+}
+.wordMeaning,
+.wordMeaningTranslation,
+.wordExample,
+.wordExampleTranslation{
+    color: var(--second-text-color);
+    font-size: var(--font-size-xs);
+    height: auto;
+    width: auto;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.wordExampleTitle{
+    color: var(--second-text-color);
+    font-size: var(--font-size-s);
+    font-family: 'Open Sans', sans-serif;
+    height: auto;
+    width: auto;
+    text-align: center;
+    margin-bottom: 10px;
+}

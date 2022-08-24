@@ -1,6 +1,7 @@
 import { Component } from "../components";
 import { Cards } from "../cards/cards";
 import { Word } from "../word/word"
+import './bookCards.css'
 
 
 export class BookCards extends Component {

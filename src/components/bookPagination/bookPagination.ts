@@ -2,6 +2,7 @@ import { Component } from '../components';
 import { Paragraph } from '../paragraph/paragraph';
 import { Image } from '../image/image';
 import { BOOK_PAGE_NUMBER } from '../../constants/data';
+import './bookPagination.css'
 
 export class BookPagination extends Component{
     private arrowBack: Image;
@@ -14,7 +15,7 @@ export class BookPagination extends Component{
         this.arrowBack = new Image(
             this.element,
             ['arrowBack'],
-            './assets/arrowBack.svg',
+            './assets/arrowL.png',
             'arrowBack'
         )
         
@@ -27,7 +28,7 @@ export class BookPagination extends Component{
         this.arrowForward = new Image(
             this.element,
             ['arrowForward'],
-            './assets/arrowForward.svg',
+            './assets/arrowR.png',
             'arrowForward'
         )
     }
