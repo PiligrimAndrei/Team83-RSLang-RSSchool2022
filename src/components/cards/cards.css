@@ -1,0 +1,65 @@
+@import '../../constants/root.css';
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 125px);
+    grid-template-rows: repeat(5, 120px);
+    gap: 30px;
+    margin-bottom: 30px;
+}
+.cardContainer {
+    width: 125px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-card);
+}
+.wordName {
+    color: var(--second-text-color);
+    font-size: var(--font-size-xs);
+    height: 60px;
+    width: 125px;
+    text-align: center;
+    transform: translate(0, 50%);
+}
+.iconsContainer {
+    display: flex;
+    justify-content: space-around;
+}
+.hardIcoCard{
+    background-color: var(--second-text-color);
+    opacity: 30%;
+    -webkit-mask: url('../../assets/hardIcoCard.svg') no-repeat center;
+    mask: url('../../assets/hardIcoCard.svg') no-repeat center;
+}
+.learnedIcoCard {
+    background-color: var(--second-text-color);
+    opacity: 30%;
+    -webkit-mask: url('../../assets/learnedIcoCard.svg') no-repeat center;
+    mask: url('../../assets/learnedIcoCard.svg') no-repeat center;
+}
+
+.hardIcoCard .active{
+    background-color: var(--main-text-color);
+    opacity: 100%;
+    -webkit-mask: url('../../assets/hardIcoCard.svg') no-repeat center;
+    mask: url('../../assets/hardIcoCard.svg') no-repeat center;
+}
+.learnedIcoCard .active{
+    background-color: var(--main-text-color);
+    opacity: 100%;
+    -webkit-mask: url('../../assets/learnedIcoCard.svg') no-repeat center;
+    mask: url('../../assets/learnedIcoCard.svg') no-repeat center;
+}
+
+.hardIcoCard .chosenActive{
+    background-color: var(--second-text-color);
+    opacity: 100%;
+    -webkit-mask: url('../../assets/hardIcoCard.svg') no-repeat center;
+    mask: url('../../assets/hardIcoCard.svg') no-repeat center;
+}
+.learnedIcoCard .chosenActive{
+    background-color: var(--second-text-color);
+    opacity: 100%;
+    -webkit-mask: url('../../assets/learnedIcoCard.svg') no-repeat center;
+    mask: url('../../assets/learnedIcoCard.svg') no-repeat center;
+}

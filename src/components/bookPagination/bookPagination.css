@@ -1,0 +1,21 @@
+@import '../../constants/root.css';
+
+.bookPagination{
+    height: 130px;
+    margin: auto 0;
+    display: flex;
+    justify-content: center;
+}
+.pageNumber {
+    font-size: var(--font-size-l);    
+    font-weight: bold;
+    margin: 0 25px;
+}
+.arrowBack,
+.arrowForward {
+    width: 60px;
+    height: 60px;
+}
+.arrowBack {
+    transform: scale(-1, 1);
+}

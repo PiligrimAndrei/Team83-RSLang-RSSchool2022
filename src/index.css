@@ -6,10 +6,12 @@
 }
 
 body {
-  background-color: #173750;
+  width: 1024px;
+  margin: 0 auto;
+  background-color: var(--main-bg-color);
   color: #fff;
-  font-family: "Roboto", sans-serif;
-  padding: 0 10px;
+  font-family: var(--main-font-family);
+  padding: 0 60px;
   position: relative;
 }
 
@@ -18,7 +20,4 @@ main {
   padding-bottom: 50px;
 }
 
-button,
-input {
-  font-family: "Roboto", sans-serif;
-}
+

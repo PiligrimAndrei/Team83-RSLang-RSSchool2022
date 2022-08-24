@@ -4,6 +4,7 @@ import { Image } from "../../components/image/image";
 import { Span } from '../span/span';
 import { WORD_POPUP_CORRECT_COUNT } from '../../constants/data';
 import { WORD_POPUP_ERROR_COUNT } from '../../constants/data';
+import './word.css'
 
 export class Word extends Component {
     private wordImage: Image;
@@ -43,19 +44,19 @@ export class Word extends Component {
         )
 
         this.popupTitle = new Paragraph(
-            this.element,
+            this.popupРintContainer.element,
             ['popupTitle'],
             ''
         )
 
         this.popupCorrectCount = new Paragraph(
-            this.element,
+            this.popupРintContainer.element,
             ['popupCorrectCount'],
             `Правильно угадано: ${WORD_POPUP_CORRECT_COUNT}`
         )
         
         this.popupErrorCount = new Paragraph(
-            this.element,
+            this.popupРintContainer.element,
             ['popupErrorCount'],
             `Ошибок: ${WORD_POPUP_ERROR_COUNT}`
         )
@@ -85,7 +86,7 @@ export class Word extends Component {
         this.wordName = new Paragraph(
             this.element,
             ['wordName'],
-            ''
+            '111'
         )
         
         this.wordPronunciationContainer = new Component(
@@ -97,7 +98,7 @@ export class Word extends Component {
         this.wordTranscription = new Paragraph(
             this.wordPronunciationContainer.element,
             ['wordTranscription'],
-            ''
+            '[111]'
         )
 
         this.wordPronunciationImage = new Image(
@@ -110,19 +111,19 @@ export class Word extends Component {
         this.wordNameTranslation = new Paragraph(
             this.element,
             ['wordNameTranslation'],
-            ''
+            '111'
         )
 
         this.wordMeaning = new Paragraph(
             this.element,
             ['wordMeaning'],
-            ''
+            '11'
         )
 
         this.wordMeaningTranslation = new Paragraph(
             this.element,
             ['wordMeaningTranslation'],
-            ''
+            '11'
         )
 
         this.wordExampleTitle = new Paragraph(
@@ -134,13 +135,13 @@ export class Word extends Component {
         this.wordExample = new Paragraph(
             this.element,
             ['wordExample'],
-            ''
+            '1'
         )
 
         this.wordExampleTranslation = new Paragraph(
             this.element,
             ['wordExampleTranslation'],
-            ''
+            '1'
         )
     }
 }

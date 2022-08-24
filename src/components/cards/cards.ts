@@ -2,6 +2,7 @@ import { Component } from "../components";
 import { Paragraph } from "../paragraph/paragraph";
 import { Image } from "../image/image";
 import { MAX_CARDS_ON_PAGE } from "../../constants/data";
+import './cards.css'
 
 export class Cards extends Component {
     private wordName: Paragraph;
@@ -14,7 +15,7 @@ export class Cards extends Component {
 
         super(parentNode, 'div', ['cards'])
 
-        for(let i = 0; i < MAX_CARDS_ON_PAGE; i += 1){
+        for(let i = 0; i < MAX_CARDS_ON_PAGE - 1; i += 1){
             
             this.cardContainer = new Component(
                 this.element,
@@ -25,7 +26,7 @@ export class Cards extends Component {
             this.wordName = new Paragraph(
                 this.cardContainer.element,
                 ['wordName'],
-                ''
+                'fhdhd'
             )
     
             this.iconsContainer = new Component(
@@ -37,14 +38,14 @@ export class Cards extends Component {
             this.hardIcoCard = new Image(
                 this.iconsContainer.element,
                 ['hardIcoCard'],
-                './assets/hardIcoCard.svg',
+                './assets/hard.png',
                 'hardIcoCard'
             )
     
             this.learnedIcoCard = new Image(
                 this.iconsContainer.element,
                 ['learnedIcoCard'],
-                './assets/learnedIcoCard.svg',
+                './assets/learned.png',
                 'learnedIcoCard'
             )
         }
