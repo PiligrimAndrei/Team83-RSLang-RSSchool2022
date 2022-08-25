@@ -1,22 +1,24 @@
 import { Component } from '../../components/components';
+import { Heading } from '../heading/heading';
+import { Link } from '../link/link';
 import './header.css'
 
 export class Header extends Component {
   private navContainer: Component;
   private navItems: Component[] = [];
-  private linkToMain: Component;
-  private linkToBook: Component;
-  private linkToGames: Component;
-  private linkToStatics: Component;
-  private linkToSignIn: Component;
-  private headerLogo: Component;
+  private linkToMain: Link;
+  private linkToBook: Link;
+  private linkToGames: Link;
+  private linkToStatics: Link;
+  private linkToSignIn: Link;
+  private headerLogo: Heading;
 
   constructor(parentNode: HTMLElement) {
-    super(parentNode, 'div', ['header']);
+    super(parentNode, 'header', ['header']);
 
-    this.headerLogo = new Component(
+    this.headerLogo = new Heading(
       this.element,
-      'div',
+      'h1',
       ['header__logo'],
       'LangSpace'
     ),
@@ -27,42 +29,36 @@ export class Header extends Component {
         ['nav__container']
       ),
 
-      this.linkToMain = new Component(
+      this.linkToMain = new Link(
         this.navContainer.element,
-        'a',
+        '#/',
         ['nav__item'],
         'Главная',
       ),
-      this.linkToBook = new Component(
+      this.linkToBook = new Link(
         this.navContainer.element,
-        'a',
+        '#/book',
         ['nav__item'],
         'Учебник',
       ),
-      this.linkToGames = new Component(
+      this.linkToGames = new Link(
         this.navContainer.element,
-        'a',
+        '#/game_sprint',
         ['nav__item'],
         'Игры',
       ),
-      this.linkToStatics = new Component(
+      this.linkToStatics = new Link(
         this.navContainer.element,
-        'a',
+        '#/statics',
         ['nav__item'],
         'Статистика',
       ),
-      this.linkToSignIn = new Component(
+      this.linkToSignIn = new Link(
         this.navContainer.element,
-        'link',
+        '#/autorization',
         ['nav__item', 'nav__button'],
         'Вход',
       );
-
-    this.linkToMain.element.setAttribute('href', '#/');
-    this.linkToBook.element.setAttribute('href', '#/book');
-    this.linkToGames.element.setAttribute('href', '#/game_sprint');
-    this.linkToStatics.element.setAttribute('href', '#/statics');
-    this.linkToSignIn.element.setAttribute('href', '#/autorization');
 
     this.navItems = [this.linkToMain, this.linkToBook, this.linkToGames, this.linkToStatics, this.linkToSignIn];
 
