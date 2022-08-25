@@ -1,5 +1,6 @@
 import { Component } from '../components';
 import './singInForm.css'
+
 import { Heading } from "../../components/heading/heading";
 import { Button } from "../../components/button/button";
 import { Input } from "../../components/input/input";
@@ -12,16 +13,15 @@ export class SingInForm extends Component{
     private inputEmail!: Input;
     private inputPassword!: Input;
     private enterButton: Button;
-    private headingAutorization!: Heading;
-    private linkToSingUp: Link;
+    private headingAutorization!: Paragraph;
+    private linkToSingUp: Paragraph;
     private textToSingUp: Paragraph;
 
     constructor(parentNode: HTMLElement){
         super(parentNode, 'div', ['autotizationFields'])
 
-        this.headingAutorization = new Heading(
+        this.headingAutorization = new Paragraph(
             this.element,
-            'h1',
             ['autorizationTitle'],
             'Вход в аккаунт'
         )
@@ -60,14 +60,15 @@ export class SingInForm extends Component{
             'Еще не с нами? '
         )
 
-        this.linkToSingUp = new Link(
+        this.linkToSingUp = new Paragraph(
             this.textToSingUp.element,
-            '',
             ['linkToSingUp'],
-            'Зарегистрируйтесь'
+            ' Зарегистрируйтесь'
         )
 
+    
     }
+
 
     
 }

@@ -13,16 +13,15 @@ export class SingUpForm extends Component{
     private inputEmail!: Input;
     private inputPassword!: Input;
     private enterButton: Button;
-    private headingRegistration!: Heading;
-    private linkToSingIn: Link;
+    private headingRegistration!: Paragraph;
+    private linkToSingIn: Paragraph;
     private textToSingIn: Paragraph;
 
     constructor(parentNode: HTMLElement){
         super(parentNode, 'div', ['registrationFields'])
 
-        this.headingRegistration = new Heading(
+        this.headingRegistration = new Paragraph(
             this.element,
-            'h1',
             ['registrationTitle'],
             'Регистрация'
         )
@@ -65,17 +64,16 @@ export class SingUpForm extends Component{
 
         this.textToSingIn = new Paragraph(
             this.element,
-            ['textToSingUp'],
+            ['textToSingIn'],
             'Уже с нами? '
         )
 
-        this.linkToSingIn = new Link(
+        this.linkToSingIn = new Paragraph(
             this.textToSingIn.element,
-            '',
-            ['linkToSingUp'],
-            'Войти'
+            ['linkToSingIn'],
+            ' Войти'
         )
-
+        
     }
 
     
