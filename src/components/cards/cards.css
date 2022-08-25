@@ -13,7 +13,7 @@
     flex-direction: column;
     background-color: var(--color-card);
 }
-.wordName {
+.wordNameCard {
     color: var(--second-text-color);
     font-size: var(--font-size-xs);
     height: 60px;
