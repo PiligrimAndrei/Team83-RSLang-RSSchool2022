@@ -1,0 +1,44 @@
+@import '../../constants/root.css';
+
+.footer {
+    width: 100%;
+    height: 335px;
+    border-top: solid 25px var(--second-text-color);
+    border-bottom: solid 25px var(--second-text-color);
+    background: url(..//../assets/footer_img.png);
+    background-position: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 35px 60px;
+}
+
+.logos__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer__logo,
+.footer__year {
+    font-family: var(--main-font-family);
+    font-size: var(--font-size-m);
+    font-weight: bold;
+}
+
+.dev__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.dev__Github__Link {
+    text-decoration: none;
+    font-family: var(--main-font-family);
+    font-size: var(--font-size-s);
+    color: var(--main-font-color);
+    letter-spacing: 1.3px;
+}
+.dev__Github__Link:hover {
+    font-weight: bold;
+}

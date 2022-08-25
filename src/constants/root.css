@@ -38,7 +38,7 @@
 
 
     --accent-background: linear-gradient(to top, var(--main-color), white);
-    --main-font-family: 'Open Sans';
+    --main-font-family: 'Open Sans', sans-serif;
     --font-size-l: 32px;
     --font-size-m: 25px;
     --font-size-s: 17px;
