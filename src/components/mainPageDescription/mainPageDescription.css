@@ -1,0 +1,9 @@
+.mainPageDescription {
+    position: relative;
+    height: 860px;
+}
+.descriptionText {
+    position: absolute;
+    width: 690px;
+    height: 310px;
+}
