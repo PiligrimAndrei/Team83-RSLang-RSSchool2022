@@ -1,0 +1,25 @@
+@import "../../constants/root.css";
+
+.linkToAudioGame {
+    grid-column: 1/4;
+}
+.linkToSprintGame {
+    grid-column: 4/7;
+}
+.linkToGame {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--inactive-text-color);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: var(--font-size-m);
+    background-color: var(--color-card);
+}
+.linkToGame:hover {
+    color: var(--second-text-color);
+    background-color: #FFFFFF;
+    border: 10px solid var(--accent-color);
+}

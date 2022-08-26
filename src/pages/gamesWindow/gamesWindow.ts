@@ -27,7 +27,7 @@ export class GamesWindow extends Component {
       const langLevelBtn = new Button(
         this.element,
         "button",
-        ["langLevelBtn", `langLevelBtn${difficulty}`],
+        ["langLevelBtn", `langLevelBtn${difficulty}`, "langLevelBtnGames"],
         `${difficulty}`
       );
       this.langLevelBtns.push(langLevelBtn);
@@ -36,14 +36,14 @@ export class GamesWindow extends Component {
     this.linkToAudioGame = new Link(
       this.element,
       "#/game_audio",
-      ["linkToAudioGame"],
+      ["linkToAudioGame", "linkToGame"],
       "Игра “АУДИОВЫЗОВ”"
     );
 
     this.linkToSprintGame = new Link(
       this.element,
       "#/game_sprint",
-      ["linkToSprintGame"],
+      ["linkToSprintGame", "linkToGame"],
       "Игра “СПРИНТ”"
     );
   }
