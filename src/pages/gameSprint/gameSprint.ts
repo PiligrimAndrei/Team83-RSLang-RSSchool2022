@@ -1,4 +1,5 @@
 import { getWord, getWords } from "../../api/api";
+import { Button } from "../../components/button/button";
 import { Component } from "../../components/components";
 import { Paragraph } from "../../components/paragraph/paragraph";
 import { Span } from "../../components/span/span";
@@ -13,6 +14,8 @@ export class GameSprint extends Component {
   private progressBarContainer: Component;
   private translateWord: Paragraph;
   private currentWord: Paragraph;
+  private buttonYes: Button;
+  private buttonNo: Button;
   group = 1;
   page = 1;
   constructor(parentNode: HTMLElement) {
@@ -66,6 +69,20 @@ export class GameSprint extends Component {
       this.element,
       ['current__word'],
       'пять'
+    );
+
+    this.buttonYes = new Button(
+      this.element,
+      'submit',
+      ['button__yes'],
+      'ДА'
+    );
+
+    this.buttonNo = new Button(
+      this.element,
+      'submit',
+      ['button__no'],
+      'НЕТ'
     );
   }
 
