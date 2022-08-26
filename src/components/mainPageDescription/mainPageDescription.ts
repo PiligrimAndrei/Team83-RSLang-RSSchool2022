@@ -6,7 +6,7 @@ import { Paragraph } from "../paragraph/paragraph";
 
 export class MainPageDescription extends Component {
   descriptionText: Component;
-  descriptionHeading: Heading;
+  descriptionHeading: Paragraph;
   descriptionParagraph: Paragraph;
   descriptionImage: Image;
   constructor(parentNode: HTMLElement) {
@@ -16,9 +16,8 @@ export class MainPageDescription extends Component {
       "descriptionText",
     ]);
 
-    this.descriptionHeading = new Heading(
+    this.descriptionHeading = new Paragraph(
       this.descriptionText.element,
-      "h1",
       ["descriptionHeading"],
       "Прокачайте свой английский"
     );
@@ -27,7 +26,7 @@ export class MainPageDescription extends Component {
       this.descriptionText.element,
       ["descriptionParagraph"],
       `Учите слова, которые вам действительно понадобятся,
-      и совершенствуйте свой словарный запас всего 
+      и совершенствуйте свой словарный запас всего
       за 30 минут в день!`
     );
 

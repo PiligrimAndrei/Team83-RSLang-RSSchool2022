@@ -4,18 +4,21 @@ export const DEVELOPERS = [
     'github': 'https://github.com/ansiahalm',
     'image' : './assets/ansiahalm.png',
     'alt' : 'ansiahalm',
+    'about' : 'about',
   },
   {
     'fullname': 'Андрей Красько',
     'github': 'https://github.com/piligrimandrei',
     'image' : './assets/piligrimandrei.png',
     'alt' : 'piligrimandrei',
+    'about' : 'about',
   },
   {
     'fullname': 'Данила Халмаматов',
     'github': 'https://github.com/danilahalm',
-    'image' : './assets/danilahalm.png',
+    'image' : './assets/danilahalm.jpg',
     'alt' : 'danilahalm',
+    'about' : 'about',
   },
 ]
 

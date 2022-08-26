@@ -3,6 +3,7 @@ import { Heading } from "../heading/heading";
 import { Paragraph } from "../paragraph/paragraph";
 import { Image } from "../image/image";
 import { ADVANTAGES_CARDS_CONTENT } from "../../constants/data";
+import './mainPageAdvantages.css'
 
 export class MainPageAdvantages extends Component {
   private advantagesHeading: Heading;

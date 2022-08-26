@@ -4,6 +4,7 @@ import { Link } from "../link/link";
 import { Image } from "../image/image";
 import { Heading } from "../heading/heading";
 import { DEVELOPERS } from "../../constants/data";
+import './mainPageDevelopers.css'
 
 export class MainPageDevelopers extends Component {
   private developersHeading: Heading;
@@ -12,6 +13,8 @@ export class MainPageDevelopers extends Component {
   private developersContainer!: Component;
   private developersName!: Paragraph;
   private developersImage!: Image;
+  private developersAbout: Paragraph | undefined;
+  
   constructor(parentNode: HTMLElement) {
     super(parentNode, "div", ["mainPageDevelopers"]);
 
@@ -44,6 +47,12 @@ export class MainPageDevelopers extends Component {
         DEVELOPERS[i].github,
         ["developersGit"],
         `@${DEVELOPERS[i].github.split("/").reverse()[0]}`
+      );
+
+      this.developersAbout = new Paragraph(
+        this.developersContainer.element,
+        ["developersAbout"],
+        DEVELOPERS[i].about
       );
 
       this.developersImage = new Image(
