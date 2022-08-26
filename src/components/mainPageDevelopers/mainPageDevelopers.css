@@ -1,0 +1,70 @@
+@import '../../constants/root.css';
+
+.mainPageDevelopers {
+    display: flex;
+    flex-direction: column;
+}
+.developersHeading {
+    font-family: var(--main-font-family);
+    font-size: var(--font-size-m);
+    padding-bottom: 60px;
+    margin: 0 auto;
+}
+
+.developersCard{
+    width: 735px;
+    height: 380px;
+    background: url('../../assets/dev_img.png');
+    margin-bottom: 50px;
+}
+.developersCard:nth-child(3) {
+    align-self: flex-end;
+}
+.developerContainer {
+    margin: 25px;
+    width: 685px;
+    height: 320px;
+    background: rgba(39, 21, 86, 0.8);
+    border: 2px solid var(--accent-color);
+    display: grid;
+    grid-template-columns: repeat(3, 228px);
+    grid-template-rows: 75px auto;
+}
+.developersName {
+    grid-column: 1;
+    grid-row: 1;
+    border: solid 1px var(--accent-color);
+    text-align: center;
+    word-wrap: inherit;
+    font-size: var(--font-size-s);
+    height: 100%;
+    padding: 22px 0;
+    
+}
+.developersGit {
+    grid-column: 2;
+    grid-row: 1;
+    border: solid 1px var(--accent-color);
+    text-align: center;
+    word-wrap: inherit;
+    font-size: var(--font-size-s);
+    height: 100%;
+    padding: 22px 0;
+    text-decoration: none;
+    color: var(--main-font-color);
+
+}
+.developersAbout {
+    grid-column: 1/3;
+    grid-row: 2;
+    padding: 25px;
+    width: 100%;
+    font-size: var(--font-size-xs);
+}
+.developersImage {
+    grid-column: 3;
+    grid-row: 1/3;
+    width: 100%;
+    height: inherit;
+    object-fit: cover;
+}
