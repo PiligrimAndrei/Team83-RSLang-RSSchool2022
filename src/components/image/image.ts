@@ -1,3 +1,4 @@
+import "./image.css"
 import { Component } from "../components";
 
 export class Image extends Component {

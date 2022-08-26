@@ -1,3 +1,4 @@
+import "./mainPageDescription.css";
 import { Component } from "../components";
 import { Image } from "../image/image";
 import { Heading } from "../heading/heading";
