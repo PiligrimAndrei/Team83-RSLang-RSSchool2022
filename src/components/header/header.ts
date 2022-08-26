@@ -43,7 +43,7 @@ export class Header extends Component {
       ),
       this.linkToGames = new Link(
         this.navContainer.element,
-        '#/game_sprint',
+        '#/games',
         ['nav__item'],
         'Игры',
       ),
