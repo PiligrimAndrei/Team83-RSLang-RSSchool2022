@@ -16,7 +16,7 @@ export class BookNavigation extends Component {
             this.element,
             'button',
             ['hardWordsBtn'],
-            'Сложные слова'
+            'Сложные слова'// TODO in const.ts in this folder
         )
 
         this.learnedWordsBtn = new Button(

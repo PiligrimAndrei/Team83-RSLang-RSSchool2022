@@ -7,6 +7,7 @@ export class BookGames extends Component{
     private gameContainer2: Component;
     private titleAudioCall: Link;
     private titleStrint: Link;
+    //TODO empty line between before constructor
     constructor(parentNode: HTMLElement){
         super(parentNode, 'div', ['bookGames'])
 

@@ -83,3 +83,5 @@ export class Router {
     this.updateRouter();
   }
 }
+
+//TODO all routes in constants. ROUTERS = {games : '/games'}      name: 'ROUTERS.games',

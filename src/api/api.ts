@@ -7,14 +7,14 @@ export const getWords = async (group = 0, page = 0,): Promise<{ words: Array<IWo
     const data = await fetch(`${baseUrl}/words?group=${group}&page${page}`);
     const res: IWord[] = await data.json()
 
-    if (data.status === 200) {
+    if (data.status === 200) { // TODO in this folder create consts.ts and describe 200 and other codes
       return {
         words: res
       }
     }
     return null
   } catch (err) {
-    throw new Error("Error");
+    throw new Error("Error"); // in consts.ts const ERROR = "Error" better describe different errors
   }
 }
 
@@ -108,3 +108,5 @@ export const signIn = async (user: IUpdateUser): Promise<ISignIn | null> => {
   }
   return null;
 }
+
+//TODO methods post, put,etc. need validate

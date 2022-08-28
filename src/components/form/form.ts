@@ -1,4 +1,5 @@
 import { Component } from '../../components/components';
+import {TAG} from "../../constants/constants";
 import './form.css'
 export class Form extends Component {
     
@@ -6,7 +7,7 @@ export class Form extends Component {
         parentNode:HTMLElement,
         styles: string[] = [],
         ){
-        super(parentNode, "form");
+        super(parentNode, TAG.form);
 
         this.element.classList.add(...styles);
     }
