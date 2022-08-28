@@ -5,6 +5,7 @@ import { Book } from '../pages/book/book';
 import { Authorization } from '../pages/authorization/authorization';
 import { GameSprint } from '../pages/gameSprint/gameSprint';
 import { GamesWindow } from '../pages/gamesWindow/gamesWindow';
+import { GameAudio } from '../pages/gameAudio/gameAudio';
 
 export class Router {
   private readonly routes: Array<IRoute>;
@@ -15,6 +16,7 @@ export class Router {
   autorizationPage: Authorization | undefined;
   gameSprintPage: Component | undefined;
   gamesWindow: GamesWindow | undefined;
+  gameAudio: GameAudio | undefined;
 
   constructor(private rootElement: HTMLElement) {
     this.mainPage = new Main(this.rootElement);
@@ -52,6 +54,13 @@ export class Router {
         component: () => {
           this.gamesWindow = new GamesWindow(this.rootElement);
           this.rootElement.append(this.gamesWindow.element);
+        },
+      },
+      {
+        name: '/game_audio',
+        component: () => {
+          this.gameAudio = new GameAudio(this.rootElement);
+          this.rootElement.append(this.gameAudio.element);
         },
       },
     ];
