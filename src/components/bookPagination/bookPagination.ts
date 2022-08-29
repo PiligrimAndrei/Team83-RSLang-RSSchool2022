@@ -32,4 +32,8 @@ export class BookPagination extends Component{
             'arrowForward'
         )
     }
+//     goToNextPage(){
+        
+        
+//     }
 }

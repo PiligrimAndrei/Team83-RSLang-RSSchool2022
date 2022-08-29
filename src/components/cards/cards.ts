@@ -1,19 +1,23 @@
 import { Component } from "../components";
 import { Paragraph } from "../paragraph/paragraph";
 import { Image } from "../image/image";
-import { MAX_CARDS_ON_PAGE } from "../../constants/data";
+import { MAX_CARDS_ON_PAGE, DIFFICULTIES } from "../../constants/data";
 import './cards.css'
+import { IWord } from "../../interfaces/interfaces";
 
 export class Cards extends Component {
     private wordNameCard: Paragraph | undefined;
     private iconsContainer: Component | undefined;
-    private cardContainer: any;
-    private hardIcoCard: any;
-    private learnedIcoCard: any;
+    private cardContainer: Component | undefined;
+    private hardIcoCard: Image | undefined;
+    private learnedIcoCard: Image | undefined;;
+    private allCards;
 
-    constructor(parentNode: HTMLElement) {
+    constructor(parentNode: HTMLElement, cards: Array<IWord>) {
 
         super(parentNode, 'div', ['cards'])
+
+        this.allCards = [];
 
         for(let i = 0; i < MAX_CARDS_ON_PAGE; i += 1){
             
@@ -26,7 +30,7 @@ export class Cards extends Component {
             this.wordNameCard = new Paragraph(
                 this.cardContainer.element,
                 ['wordNameCard'],
-                'fhdhd'
+                cards[i].word
             )
     
             this.iconsContainer = new Component(
@@ -48,6 +52,27 @@ export class Cards extends Component {
                 './assets/learned.png',
                 'learnedIcoCard'
             )
+
+            this.cardContainer.element.dataset.id = cards[i].id
+            this.hardIcoCard.element.dataset.id = cards[i].id
+            this.learnedIcoCard.element.dataset.id = cards[i].id
+            this.wordNameCard.element.dataset.id = cards[i].id
+            
+            this.allCards.push(this.cardContainer)         
         }
+
+        this.allCards[0].element.classList.add(`active${DIFFICULTIES[cards[0].group]}`)
+
+        this.allCards.map((card) => {
+            card.element.addEventListener('click', ()=>{ 
+                this.allCards.map((card) => { 
+                    let classNames = Array.from(card.element.classList);
+                    let activeClass = classNames.filter(name => name.includes("active"));
+                    card.element.classList.remove(activeClass[0])
+                })
+                card.element.classList.add(`active${DIFFICULTIES[cards[0].group]}`) 
+            })
+        })
     }
+    
 }
