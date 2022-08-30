@@ -43,37 +43,37 @@ button {
     color: var(--color-card-text);
 }
 .langLevelBtnA1:hover,
-.langLevelBtnA1 .active {
+.langLevelBtnA1.active {
     background-color: var(--color-a1);
     color: var(--main-text-color);
     font-weight: 600;
 }
 .langLevelBtnA2:hover,
-.langLevelBtnA2 .active {
+.langLevelBtnA2.active {
     background-color: var(--color-a2);
     color: var(--main-text-color);
     font-weight: 600;
 }
 .langLevelBtnB1:hover,
-.langLevelBtnB1 .active {
+.langLevelBtnB1.active {
     background-color: var(--color-b1);
     color: var(--main-text-color);
     font-weight: 600;
 }
 .langLevelBtnB2:hover,
-.langLevelBtnB2 .active {
+.langLevelBtnB2.active {
     background-color: var(--color-b2);
     color: var(--main-text-color);
     font-weight: 600;
 }
 .langLevelBtnC1:hover,
-.langLevelBtnC1 .active {
+.langLevelBtnC1.active {
     background-color: var(--color-c1);
     color: var(--main-text-color);
     font-weight: 600;
 }
 .langLevelBtnC2:hover,
-.langLevelBtnC2 .active {
+.langLevelBtnC2.active {
     background-color: var(--color-c2);
     color: var(--main-text-color);
     font-weight: 600;

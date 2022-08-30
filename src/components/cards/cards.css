@@ -13,6 +13,31 @@
     flex-direction: column;
     background-color: var(--color-card);
 }
+.cardContainer.activeA1 {
+    background-color: var(--color-a1);
+    font-weight: bold;
+}
+.cardContainer.activeA2 {
+    background-color: var(--color-a2);
+    font-weight: bold;
+}
+.cardContainer.activeB1 {
+    background-color: var(--color-b1);
+    font-weight: bold;
+}
+.cardContainer.activeB2 {
+    background-color: var(--color-b2);
+    font-weight: bold;
+}
+.cardContainer.activeC1 {
+    background-color: var(--color-c1);
+    font-weight: bold;
+}
+.cardContainer.activeC2 {
+    background-color: var(--color-c2);
+    font-weight: bold;
+}
+
 .wordNameCard {
     color: var(--second-text-color);
     font-size: var(--font-size-xs);
@@ -20,7 +45,9 @@
     width: 125px;
     text-align: center;
     transform: translate(0, 50%);
+    font-weight: inherit;
 }
+
 .iconsContainer {
     display: flex;
     justify-content: space-around;
