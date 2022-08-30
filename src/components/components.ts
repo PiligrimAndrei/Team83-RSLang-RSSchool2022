@@ -24,3 +24,5 @@ export class Component {
     this.element.remove();
   }
 }
+
+//TODO move to common/basicComponent/components.ts

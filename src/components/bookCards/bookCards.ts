@@ -15,7 +15,6 @@ export class BookCards extends Component {
         this.cards = new Cards( this.element , cards);
         this.word = new Word( this.element , currentWord);
         this.cards.element.onclick = this.renderWord.bind(this)
-
     }
 
     async renderWord(event: Event) {

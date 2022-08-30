@@ -1,5 +1,6 @@
 import { Component } from '../components';
 import './singInForm.css'
+import {TAG} from "../../constants/constants";
 
 import { Heading } from "../../components/heading/heading";
 import { Button } from "../../components/button/button";
@@ -18,7 +19,7 @@ export class SingInForm extends Component{
     private textToSingUp: Paragraph;
 
     constructor(parentNode: HTMLElement){
-        super(parentNode, 'div', ['autotizationFields'])
+        super(parentNode, TAG.div, ['autotizationFields'])
 
         this.headingAutorization = new Paragraph(
             this.element,
@@ -57,7 +58,7 @@ export class SingInForm extends Component{
         this.textToSingUp = new Paragraph(
             this.element,
             ['textToSingUp'],
-            'Еще не с нами? '
+            'Еще не с нами?'
         )
 
         this.linkToSingUp = new Paragraph(
@@ -68,7 +69,4 @@ export class SingInForm extends Component{
 
     
     }
-
-
-    
 }
