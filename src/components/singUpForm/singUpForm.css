@@ -19,8 +19,8 @@
     justify-content: center;
 }
 .inputName,
-.inputEmail,
-.inputPassword ,
+.inputEmailRegistration,
+.inputPasswordRegistration,
 .submitBtnRegistration{
     box-sizing: border-box;
     margin: 0;
@@ -36,19 +36,19 @@
 
 }
 .inputName,
-.inputEmail,
-.inputPassword {
+.inputEmailRegistration,
+.inputPasswordRegistration {
     margin-bottom: 30px;
 }
 .inputName:focus,
-.inputEmail:focus,
-.inputPassword:focus {
+.inputEmailRegistration:focus,
+.inputPasswordRegistration:focus {
     outline: 0;
     box-shadow: 0 0 0 2px var(--accent-color);
 }
 .inputName::placeholder,
-.inputEmail::placeholder,
-.inputPassword::placeholder {
+.inputEmailRegistration::placeholder,
+.inputPasswordRegistration::placeholder {
     color: var(--main-font-family);
 }
 .submitBtnRegistration:hover {

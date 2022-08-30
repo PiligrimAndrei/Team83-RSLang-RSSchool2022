@@ -1,4 +1,4 @@
-import { IWord, IUser, IUpdateUser, IUserWord, ISignIn } from '../interfaces/interfaces'
+import { IWord, IUser, IUpdateUser, IUserWord, ISignIn, SignIn, ICreateUser } from '../interfaces/interfaces'
 
 const baseUrl = 'https://team83-rslang.herokuapp.com';
 
@@ -52,9 +52,9 @@ export const getUser = async (UserID: string): Promise<IUser | null> => {
     throw new Error("Error");
   }
 }
-export const createUser = async (user: IUser): Promise<void> => {
+export const createUser = async (user: ICreateUser): Promise<void> => {
   try {
-    await fetch(`${baseUrl}/user`, {
+    await fetch(`${baseUrl}/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ export const updateUser = async (user: IUpdateUser): Promise<void> => {
   }
 };
 
-export const signIn = async (user: IUpdateUser): Promise<ISignIn | null> => {
+export const signIn = async (user: SignIn): Promise<ISignIn | null> => {
   const data = await fetch(`${baseUrl}/signin`,
     {
       method: 'POST',
@@ -102,11 +102,16 @@ export const signIn = async (user: IUpdateUser): Promise<ISignIn | null> => {
       },
       body: JSON.stringify(user)
     });
-  const res: ISignIn = await data.json();
+  const res = await data.json();
   if (data.status === 200) {
+    saveToken(res.token);
     return res
   }
   return null;
+}
+function saveToken(token: string) {
+  sessionStorage.setItem('tokenData', token);
+  sessionStorage.setItem('isAutorization', 'true');
 }
 
 //TODO methods post, put,etc. need validate

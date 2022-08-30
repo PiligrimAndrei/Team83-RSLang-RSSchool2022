@@ -46,3 +46,14 @@ export interface ISignIn {
   userID: string;
   name: string;
 }
+
+export interface SignIn {
+  email: string | null | undefined;
+  password: string | null | undefined;
+}
+
+export interface ICreateUser {
+  name: string;
+  email: string;
+  password: string;
+}

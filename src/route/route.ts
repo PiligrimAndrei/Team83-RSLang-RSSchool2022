@@ -18,6 +18,7 @@ export class Router {
   gamesWindow: GamesWindow | undefined;
   gameAudio: GameAudio | undefined;
 
+
   constructor(private rootElement: HTMLElement) {
     this.mainPage = new Main(this.rootElement);
 
@@ -92,5 +93,4 @@ export class Router {
     this.updateRouter();
   }
 }
-
 //TODO all routes in constants. ROUTERS = {games : '/games'}      name: 'ROUTERS.games',
