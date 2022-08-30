@@ -9,7 +9,7 @@ export class Paragraph extends Component {
         ){
         super(parentNode, 'p');
 
-        this.element.textContent = content;
+        this.element.innerHTML = content;
         this.element.classList.add(...styles);
     }
 }

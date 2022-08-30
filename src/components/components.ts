@@ -6,12 +6,16 @@ export class Component {
     tagName: keyof HTMLElementTagNameMap = 'div',
     styles: string[] = [],
     content = '',
+    addNotInEnd:boolean = false,
   ) {
     this.element = document.createElement(tagName);
     this.element.classList.add(...styles);
     this.element.textContent = content;
 
-    if (parentNode) {
+    if (addNotInEnd) { 
+      parentNode.firstElementChild?.insertAdjacentElement("afterend", this.element)
+    }
+    if (parentNode && !addNotInEnd) {
       parentNode.append(this.element);
     }
   }

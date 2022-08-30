@@ -5,6 +5,8 @@ import { Span } from '../span/span';
 import { WORD_POPUP_CORRECT_COUNT } from '../../constants/data';
 import { WORD_POPUP_ERROR_COUNT } from '../../constants/data';
 import './word.css'
+import { IWord } from '../../interfaces/interfaces';
+import { getWord, getWords } from '../../api/api';
 
 export class Word extends Component {
     private wordImage: Image;
@@ -27,13 +29,13 @@ export class Word extends Component {
     private popupCorrectCount: Paragraph;
     private popupErrorCount: Paragraph;
 
-    constructor( parentNode: HTMLElement ){
+    constructor( parentNode: HTMLElement , currentWord: IWord){
         super(parentNode, 'div', ['wordContainer'])
 
         this.wordImage = new Image(
             this.element,
             ['wordImage'],
-            '',
+            currentWord.image,
             'wordImage'
         )
         
@@ -86,7 +88,7 @@ export class Word extends Component {
         this.wordName = new Paragraph(
             this.element,
             ['wordName'],
-            '111'
+            currentWord.word
         )
         
         this.wordPronunciationContainer = new Component(
@@ -98,7 +100,7 @@ export class Word extends Component {
         this.wordTranscription = new Paragraph(
             this.wordPronunciationContainer.element,
             ['wordTranscription'],
-            '[111]'
+            currentWord.transcription
         )
 
         this.wordPronunciationImage = new Image(
@@ -111,19 +113,19 @@ export class Word extends Component {
         this.wordNameTranslation = new Paragraph(
             this.element,
             ['wordNameTranslation'],
-            '111'
+            currentWord.wordTranslate
         )
 
         this.wordMeaning = new Paragraph(
             this.element,
             ['wordMeaning'],
-            '11'
+            currentWord.textMeaning
         )
 
         this.wordMeaningTranslation = new Paragraph(
             this.element,
             ['wordMeaningTranslation'],
-            '11'
+            currentWord.textMeaningTranslate
         )
 
         this.wordExampleTitle = new Paragraph(
@@ -135,13 +137,15 @@ export class Word extends Component {
         this.wordExample = new Paragraph(
             this.element,
             ['wordExample'],
-            '1'
+            currentWord.textExample
         )
 
         this.wordExampleTranslation = new Paragraph(
             this.element,
             ['wordExampleTranslation'],
-            '1'
+            currentWord.textExampleTranslate
         )
     }
+
 }
+

@@ -44,5 +44,20 @@ export class BookNavigation extends Component {
             )
             this.langLevelBtns.push(langLevelBtn)
         })
+
+        this.langLevelBtns[0].element.classList.add("active")
+        this.langLevelBtns.map((button,index) => {
+            button.element.dataset.button = "groupLevel";
+            button.element.dataset.difficultyLevel = `${index}`;
+            button.element.addEventListener('click', ()=>{ 
+                this.langLevelBtns.map((button,index) => { 
+                    button.element.classList.remove("active") 
+                })
+                button.element.classList.add("active") 
+            })
+        })
+      
+
+        
     }
 }

@@ -6,7 +6,7 @@ export class Button extends Component {
         parentNode:HTMLElement,
         type:string,
         styles: string[] = [],
-        content:string,
+        content:string, 
         ){
         super(parentNode, 'button');
 
