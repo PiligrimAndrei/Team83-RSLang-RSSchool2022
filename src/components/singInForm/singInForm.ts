@@ -1,6 +1,6 @@
 import { Component } from '../components';
 import './singInForm.css'
-import {TAG} from "../../constants/constants";
+import { TAG } from "../../constants/constants";
 
 import { Heading } from "../../components/heading/heading";
 import { Button } from "../../components/button/button";
@@ -8,8 +8,13 @@ import { Input } from "../../components/input/input";
 import { Link } from "../../components/link/link";
 import { Paragraph } from "../../components/paragraph/paragraph";
 import { Form } from '../form/form';
+import { getRefreshToken } from '../../api/api';
+import { ICreateUser } from '../../interfaces/interfaces';
+import { signIn } from '../../api/api';
+import { SignIn } from '../../interfaces/interfaces';
 
-export class SingInForm extends Component{
+
+export class SingInForm extends Component {
     private formAutorization!: Form;
     private inputEmail!: Input;
     private inputPassword!: Input;
@@ -18,8 +23,8 @@ export class SingInForm extends Component{
     private linkToSingUp: Paragraph;
     private textToSingUp: Paragraph;
 
-    constructor(parentNode: HTMLElement){
-        super(parentNode, "div", ['autotizationFields'])
+    constructor(parentNode: HTMLElement) {
+        super(parentNode, TAG.div, ['autotizationFields'])
 
         this.headingAutorization = new Paragraph(
             this.element,
@@ -66,7 +71,41 @@ export class SingInForm extends Component{
             ['linkToSingUp'],
             ' Зарегистрируйтесь'
         )
+        this.formAutorization.element.addEventListener('submit', this.submitFormAutorization)
+        this.headingAutorization.element.addEventListener('load', this.reverseExit)
+    }
+    submitFormAutorization(event: Event) {
 
-    
+        const form: SignIn = {
+            'email': (document.querySelector('.inputEmail') as HTMLInputElement).value,
+            'password': (document.querySelector('.inputPassword') as HTMLInputElement).value,
+        };
+
+        signIn(form).then(() => {
+            const token = sessionStorage.getItem('token');
+            const refreshToken = sessionStorage.getItem('refreshToken');
+            const userId = sessionStorage.getItem('userId');
+            const tokenDate = sessionStorage.getItem('tokenDate');
+
+            console.log("token", token, "refreshToken", refreshToken, 'UserId:', userId, 'Date', tokenDate)
+
+            let isAutorization = sessionStorage.getItem('isAutorization')
+            let exit = (document.querySelector('.nav__button') as HTMLInputElement);
+            exit.textContent = 'Выйти'
+            isAutorization = 'true'
+            window.location.hash = '/games';
+
+        });
+
+
+    }
+    reverseExit() {
+        console.log('reverse load')
+        let isAutorization = sessionStorage.getItem('isAutorization')
+        let exit = (document.querySelector('.nav__button') as HTMLInputElement);
+        if (exit.textContent === 'Выйти') {
+            exit.textContent = 'Войти';
+            isAutorization = 'false'
+        }
     }
 }
