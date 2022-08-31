@@ -20,7 +20,7 @@ export class AudioGameDescription extends Component {
 
     this.audioGameDescription = new Paragraph(
       this.element,
-      ["AudioGameDescription"],
+      ["AudioGameDescriptionText"],
       "Выберите из предложенных вариантов ответа правильный перевод слова, который услышите"
     );
 
@@ -30,8 +30,5 @@ export class AudioGameDescription extends Component {
       ["AudioGameStartButton"],
       "Начать"
     );
-    this.audioGameStartButton.element.addEventListener("click", () => {
-      this.element.style.display = "none";
-    });
   }
 }

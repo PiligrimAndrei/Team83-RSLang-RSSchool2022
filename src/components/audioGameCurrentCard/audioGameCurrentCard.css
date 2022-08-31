@@ -1,0 +1,19 @@
+@import "../../constants/root.css";
+
+.audioGameCurrentCard {
+    display: none;
+    width: 530px;
+    height: 270px;
+    flex-direction: row;
+    border: 2px solid var(--color-c2); 
+    order: 1;
+}
+.currentCardDescription {
+    padding-left: 10px;
+    width: 270px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.6);
+}

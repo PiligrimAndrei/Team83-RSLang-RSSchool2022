@@ -23,3 +23,15 @@
     background-color: #FFFFFF;
     border: 10px solid var(--accent-color);
 }
+.AudioGameCloseLink {
+    position: absolute;
+    display: block;
+    width: 5px;
+    height: 5px;
+    z-index: 5;
+    color: var(--main-text-color);
+    font-size: xx-large;
+    text-decoration: none;
+    top: 15px;
+    right: 40px;
+}
