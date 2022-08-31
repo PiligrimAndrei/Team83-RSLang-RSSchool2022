@@ -57,5 +57,24 @@ export const MAX_CARDS_ON_AUDIOGAME = 5
 
 export const MAX_DESCRIPTION_FIELDS_ON_CARD = 3
 
-
+export const STATISTIC_CONTENT = [
+  {
+    title: "Аудиовызов",
+    newWord: "Новых слов: ",
+    currectAnswer: "Правильных<br>ответов:",
+    serie: "Самая длинная<br>серия:",
+  },
+  {
+    title: "Спринт",
+    newWord: "Новых слов: ",
+    currectAnswer: "Правильных<br>ответов:",
+    serie: "Самая длинная<br>серия:",
+  },
+  {
+    title: "Итог за день",
+    newWord: "Новых слов: ",
+    currectAnswer: "Правильных<br>ответов:",
+    learnedWord: "Изученных<br>слов:",
+  },
+]
 

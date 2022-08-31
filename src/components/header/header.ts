@@ -9,7 +9,7 @@ export class Header extends Component {
   private linkToMain: Link;
   private linkToBook: Link;
   private linkToGames: Link;
-  private linkToStatics: Link;
+  private linkToStatistic: Link;
   private linkToSignIn: Link;
   private headerLogo: Heading;
 
@@ -47,9 +47,9 @@ export class Header extends Component {
         ['nav__item'],
         'Игры',
       ),
-      this.linkToStatics = new Link(
+      this.linkToStatistic = new Link(
         this.navContainer.element,
-        '#/statics',
+        '#/statistic',
         ['nav__item'],
         'Статистика',
       ),
@@ -60,7 +60,7 @@ export class Header extends Component {
         'Вход',
       );
 
-    this.navItems = [this.linkToMain, this.linkToBook, this.linkToGames, this.linkToStatics, this.linkToSignIn];
+    this.navItems = [this.linkToMain, this.linkToBook, this.linkToGames, this.linkToStatistic, this.linkToSignIn];
 
     /*this.linkToSignIn.onclick ('click', () => {
       let isAutorization = sessionStorage.getItem('isAutorization')

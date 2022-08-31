@@ -23,8 +23,8 @@ export class SingInForm extends Component {
     private linkToSingUp: Paragraph;
     private textToSingUp: Paragraph;
 
-    constructor(parentNode: HTMLElement) {
-        super(parentNode, TAG.div, ['autotizationFields'])
+    constructor(parentNode: HTMLElement){
+        super(parentNode, "div", ['autotizationFields'])
 
         this.headingAutorization = new Paragraph(
             this.element,
