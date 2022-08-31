@@ -6,8 +6,9 @@ import { Link } from "../../components/link/link";
 import { Paragraph } from "../../components/paragraph/paragraph";
 import { Form } from '../form/form';
 import { Button } from '../button/button';
-
-export class SingUpForm extends Component{
+import { createUser } from '../../api/userApi';
+import { ICreateUser } from '../../interfaces/interfaces';
+export class SingUpForm extends Component {
     private formRegistration!: Form;
     private inputName!: Input;
     private inputEmail!: Input;
@@ -17,7 +18,7 @@ export class SingUpForm extends Component{
     private linkToSingIn: Paragraph;
     private textToSingIn: Paragraph;
 
-    constructor(parentNode: HTMLElement){
+    constructor(parentNode: HTMLElement) {
         super(parentNode, 'div', ['registrationFields'])
 
         this.headingRegistration = new Paragraph(
@@ -42,7 +43,7 @@ export class SingUpForm extends Component{
         this.inputEmail = new Input(
             this.formRegistration.element,
             'email',
-            ['inputEmail'],
+            ['inputEmailRegistration'],
             'Логин',
             'false'
         )
@@ -50,10 +51,11 @@ export class SingUpForm extends Component{
         this.inputPassword = new Input(
             this.formRegistration.element,
             'password',
-            ['inputPassword'],
+            ['inputPasswordRegistration'],
             'Пароль',
             'false'
         )
+
 
         this.enterButton = new Button(
             this.formRegistration.element,
@@ -73,8 +75,18 @@ export class SingUpForm extends Component{
             ['linkToSingIn'],
             ' Войти'
         )
-        
+
+        this.formRegistration.element.addEventListener('submit', this.submitFormRegistration)
     }
 
-    
+    submitFormRegistration(event: Event) {
+        const form: ICreateUser = {
+            'name': (document.querySelector('.inputName') as HTMLInputElement).value,
+            'email': (document.querySelector('.inputEmailRegistration') as HTMLInputElement).value,
+            'password': (document.querySelector('.inputPasswordRegistration') as HTMLInputElement).value,
+        };
+        createUser(form);
+        window.location.hash = '/book';
+        console.log('window.location.hash', window.location.hash)
+    }
 }

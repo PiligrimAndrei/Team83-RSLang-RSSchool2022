@@ -1,0 +1,93 @@
+.game_sprint{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+}
+.timer{
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 25px;
+line-height: 160%;
+}
+.progress__bar-container{
+  display: flex;
+  height: 24px;
+  width: 50%;
+  margin-top: 20px;
+  }
+.progress__bar {
+  margin: 2px auto;
+  width: 20px;
+  height: 20px;
+  background: #fefcff;
+  border-radius: 0%;
+  border: 1px solid #cdcbd0;
+} 
+.words {
+  margin-top: 38px;
+}
+.translate__word, .current__word{
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 25px;
+line-height: 160%;
+align-items: center;
+text-align: center;
+color: #FFFFFF;
+}
+.score__container {
+  display: flex;
+  height: 24px;
+  width: 70%;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.scoreWord, .totalScore{
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 160%;
+  align-items: center;
+  text-align: right;
+    color: #FFFFFF;
+}
+.button__container{
+  display: flex;
+  justify-content: space-between;
+  margin-top:55px;
+  margin-bottom:55px;
+}
+
+.button__no, .button__yes{
+width: 120px;
+height: 40px;
+margin-right: 50px;
+border:2px solid;
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 17px;
+line-height: 130%;
+letter-spacing: 0.06em;
+color: #FFFFFF;
+background-color: transparent;
+}
+.button__yes{
+  border-color: #97D9E9;
+}
+.button__no{
+  border-color: #FF8855;
+}
+.button__yes:hover{
+border: 4px solid #97D9E9
+}
+.button__no:hover{
+  border: 4px solid #FF8855
+  }

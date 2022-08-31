@@ -3,7 +3,7 @@ import { Component } from '../components/components';
 import { Main } from '../pages/main/main';
 import { Book } from '../pages/book/book';
 import { Authorization } from '../pages/authorization/authorization';
-import { GameSprint } from '../pages/gameSprint/gameSprint';
+import { GameSprintPage } from '../pages/gameSprint/gameSprint';
 import { GamesWindow } from '../pages/gamesWindow/gamesWindow';
 import { GameAudio } from '../pages/gameAudio/gameAudio';
 import { Statistic } from '../pages/statistic/statistic';
@@ -19,6 +19,7 @@ export class Router {
   gamesWindow: GamesWindow | undefined;
   gameAudio: GameAudio | undefined;
   statistic: Statistic | undefined;
+
 
   constructor(private rootElement: HTMLElement) {
     this.mainPage = new Main(this.rootElement);
@@ -47,7 +48,7 @@ export class Router {
       {
         name: '/game_sprint',
         component: () => {
-          this.gameSprintPage = new GameSprint(this.rootElement);
+          this.gameSprintPage = new GameSprintPage(this.rootElement);
           this.rootElement.append(this.gameSprintPage.element);
         },
       },
@@ -101,5 +102,4 @@ export class Router {
     this.updateRouter();
   }
 }
-
 //TODO all routes in constants. ROUTERS = {games : '/games'}      name: 'ROUTERS.games',
