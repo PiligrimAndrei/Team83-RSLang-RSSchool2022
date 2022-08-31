@@ -6,3 +6,8 @@
     grid-column: 1/7;
     text-align: center;
 }
+
+.AudioGameHeading {
+    color: var(--main-text-color);
+    font-size: var(--font-size-m);
+}

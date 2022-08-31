@@ -1,0 +1,11 @@
+@import "../../constants/root.css";
+
+.AudioGameDescriptionText {
+    font-size: var(--font-size-s);
+    color: var(--main-text-color);
+    text-align: center;
+}
+.currentCardDescriptionField {
+    font-size: var(--font-size-s);
+    color: var(--main-text-color);
+}

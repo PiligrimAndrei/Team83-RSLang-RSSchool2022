@@ -6,10 +6,11 @@ import { DIFFICULTIES } from "../../constants/data";
 import { Link } from "../../components/link/link";
 
 export class GamesWindow extends Component {
-  gamesWindowHeading: Heading;
-  langLevelBtns: Button[];
-  linkToSprintGame: Link;
-  linkToAudioGame: Link;
+  private gamesWindowHeading: Heading;
+  private langLevelBtns: Button[];
+  private linkToSprintGame: Link;
+  private linkToAudioGame: Link;
+  private langLevelBtn: Button | undefined;
 
   constructor(parentNode: HTMLElement) {
     super(parentNode, "div", ["gamesWindow"]);
@@ -23,15 +24,15 @@ export class GamesWindow extends Component {
 
     this.langLevelBtns = [];
 
-    DIFFICULTIES.map((difficulty) => {
-      const langLevelBtn = new Button(
+    for (let i = 0; i < DIFFICULTIES.length; i += 1) {
+      this.langLevelBtn = new Button(
         this.element,
         "button",
-        ["langLevelBtn", `langLevelBtn${difficulty}`, "langLevelBtnGames"],
-        `${difficulty}`
+        ["langLevelBtn", `langLevelBtn${DIFFICULTIES[i]}`, "langLevelBtnGames"],
+        `${DIFFICULTIES[i]}`
       );
-      this.langLevelBtns.push(langLevelBtn);
-    });
+      this.langLevelBtns.push(this.langLevelBtn);
+    }
 
     this.linkToAudioGame = new Link(
       this.element,
