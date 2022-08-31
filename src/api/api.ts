@@ -2,9 +2,9 @@ import { IWord, IUser, IUpdateUser, IUserWord, ISignIn } from '../interfaces/int
 
 const baseUrl = 'https://team83-rslang.herokuapp.com';
 
-export const getWords = async (group = 0, page = 0,): Promise<{ words: Array<IWord> } | null> => {
+export const getWords = async (group = 0, page = 0): Promise<{ words: Array<IWord> } | null> => {
   try {
-    const data = await fetch(`${baseUrl}/words?group=${group}&page${page}`);
+    const data = await fetch(`${baseUrl}/words?group=${group}&page=${page}`);
     const res: IWord[] = await data.json()
 
     if (data.status === 200) { // TODO in this folder create consts.ts and describe 200 and other codes

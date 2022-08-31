@@ -7,7 +7,7 @@ export class Form extends Component {
         parentNode:HTMLElement,
         styles: string[] = [],
         ){
-        super(parentNode, TAG.form);
+        super(parentNode, "form");
 
         this.element.classList.add(...styles);
     }
