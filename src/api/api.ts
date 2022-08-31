@@ -1,7 +1,7 @@
 import { IWord, IUser, IUpdateUser, IUserWord, ISignIn, SignIn, ICreateUser, IFetchOptions } from '../interfaces/interfaces'
 import { BASEURL, RESPONSE } from './consts';
 
-export const getWords = async (group = 0, page = 0,): Promise<{ words: Array<IWord> } | null> => {
+export const getWords = async (group = 0, page = 0): Promise<{ words: Array<IWord> } | null> => {
   try {
     const data = await fetch(`${BASEURL}/words?group=${group}&page${page}`);
     const res: IWord[] = await data.json()

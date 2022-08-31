@@ -45,7 +45,7 @@ export class BookNavigation extends Component {
             this.langLevelBtns.push(langLevelBtn)
         })
 
-        this.langLevelBtns[0].element.classList.add("active")
+        this.langLevelBtns[Number(localStorage.getItem('difficultyLevel'))].element.classList.add("active")
         this.langLevelBtns.map((button,index) => {
             button.element.dataset.button = "groupLevel";
             button.element.dataset.difficultyLevel = `${index}`;
