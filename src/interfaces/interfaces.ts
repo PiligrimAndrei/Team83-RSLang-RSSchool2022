@@ -25,15 +25,6 @@ export interface IUpdateUser {
   name: string;
   email: string;
 }
-export interface IUserWord {
-  difficulty: string;
-  optional:
-  {
-    counter: number,
-    correct: number,
-    uncorrect: number
-  }
-}
 export interface IRoute {
   name: string;
   component: () => void;
@@ -56,4 +47,27 @@ export interface ICreateUser {
   name: string;
   email: string;
   password: string;
+}
+
+export interface IUserWord {
+  difficulty: string;
+  optional: {
+    learned: boolean;
+    countUse?: number
+    counteCorrect?: number
+    countUseSprint?: number
+    countCorrectSprint?: number
+    countUseAudiocall?: number
+    countCorrectAudiocall?: number
+  }
+}
+
+export interface IFetchOptions {
+  method: string
+  headers: {
+    Authorization: string;
+    Accept: string;
+    'Content-Type': string;
+  };
+  body?: string
 }

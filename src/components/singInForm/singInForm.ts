@@ -8,7 +8,7 @@ import { Input } from "../../components/input/input";
 import { Link } from "../../components/link/link";
 import { Paragraph } from "../../components/paragraph/paragraph";
 import { Form } from '../form/form';
-import { createUser } from '../../api/api';
+import { getRefreshToken } from '../../api/api';
 import { ICreateUser } from '../../interfaces/interfaces';
 import { signIn } from '../../api/api';
 import { SignIn } from '../../interfaces/interfaces';
@@ -80,15 +80,24 @@ export class SingInForm extends Component {
             'email': (document.querySelector('.inputEmail') as HTMLInputElement).value,
             'password': (document.querySelector('.inputPassword') as HTMLInputElement).value,
         };
-        console.log('Введено', form);
-        signIn(form);
-        console.log("SessionStorage", sessionStorage.getItem('tokenData'), sessionStorage.getItem('isAutorization'))
-        let isAutorization = sessionStorage.getItem('isAutorization')
-        console.log('isAutorization', isAutorization)
-        let exit = (document.querySelector('.nav__button') as HTMLInputElement);
-        exit.textContent = 'Выйти'
-        isAutorization = 'true'
-        window.location.hash = '/book';
+
+        signIn(form).then(() => {
+            const token = sessionStorage.getItem('token');
+            const refreshToken = sessionStorage.getItem('refreshToken');
+            const userId = sessionStorage.getItem('userId');
+            const tokenDate = sessionStorage.getItem('tokenDate');
+
+            console.log("token", token, "refreshToken", refreshToken, 'UserId:', userId, 'Date', tokenDate)
+
+            let isAutorization = sessionStorage.getItem('isAutorization')
+            let exit = (document.querySelector('.nav__button') as HTMLInputElement);
+            exit.textContent = 'Выйти'
+            isAutorization = 'true'
+            window.location.hash = '/games';
+
+        });
+
+
     }
     reverseExit() {
         console.log('reverse load')

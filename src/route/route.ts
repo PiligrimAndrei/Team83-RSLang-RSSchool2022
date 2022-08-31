@@ -3,7 +3,7 @@ import { Component } from '../components/components';
 import { Main } from '../pages/main/main';
 import { Book } from '../pages/book/book';
 import { Authorization } from '../pages/authorization/authorization';
-import { GameSprint } from '../pages/gameSprint/gameSprint';
+import { GameSprintPage } from '../pages/gameSprint/gameSprint';
 import { GamesWindow } from '../pages/gamesWindow/gamesWindow';
 import { GameAudio } from '../pages/gameAudio/gameAudio';
 
@@ -46,7 +46,7 @@ export class Router {
       {
         name: '/game_sprint',
         component: () => {
-          this.gameSprintPage = new GameSprint(this.rootElement);
+          this.gameSprintPage = new GameSprintPage(this.rootElement);
           this.rootElement.append(this.gameSprintPage.element);
         },
       },

@@ -6,7 +6,7 @@ import { Link } from "../../components/link/link";
 import { Paragraph } from "../../components/paragraph/paragraph";
 import { Form } from '../form/form';
 import { Button } from '../button/button';
-import { createUser } from '../../api/api';
+import { createUser } from '../../api/userApi';
 import { ICreateUser } from '../../interfaces/interfaces';
 export class SingUpForm extends Component {
     private formRegistration!: Form;
