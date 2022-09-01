@@ -8,6 +8,7 @@ export class BookPagination extends Component{
     private arrowForward: Image;
     private pageNumber: Paragraph;
     
+
     constructor(parentNode: HTMLElement){
         super(parentNode, 'div', ['bookPagination'])
 
@@ -17,6 +18,10 @@ export class BookPagination extends Component{
             './assets/arrowL.png',
             'arrowBack'
         )
+        if((Number(localStorage.getItem('pageNumber')) === 0) || !localStorage.getItem('pageNumber')){
+            this.arrowBack.element.classList.add('disabled')
+
+        }
         
         this.pageNumber = new Paragraph(
             this.element,
@@ -30,9 +35,72 @@ export class BookPagination extends Component{
             './assets/arrowR.png',
             'arrowForward'
         )
+        if(Number(localStorage.getItem('pageNumber')) === 29){
+            this.arrowForward.element.classList.add('disabled')
+
+        }
+
+        this.arrowBack.element.onclick = this.changeArrowStyle.bind(this) 
+        this.arrowForward.element.onclick = this.changeArrowStyle.bind(this) 
+
     }
-//     goToNextPage(){
+    changeArrowStyle(event: Event){
+        let LSpageNumber =  Number(localStorage.getItem('pageNumber'));
+        let target = event.target as HTMLElement;
+
+        if(target.classList.contains("arrowForward")){
+            if(LSpageNumber === 0){
+                this.arrowBack.element.classList.remove('disabled')
+                this.arrowBack.element.style.pointerEvents = "auto"
+            }
+            if(LSpageNumber === 28){
+                target.classList.add('disabled')
+                target.style.pointerEvents = "none"
+            }
+        }
+        if(target.classList.contains("arrowBack")){
+            if(LSpageNumber === 29){
+                this.arrowForward.element.classList.remove('disabled')
+                this.arrowForward.element.style.pointerEvents = "auto"
+            }
+            if(LSpageNumber === 1){
+                target.classList.add('disabled')
+                target.style.pointerEvents = "none"
+            }
+        }
+    }
+    // async changeArrowStyle(event: Event){
+    //     let target = event.target as HTMLElement;
+    //     let LSpageNumber =  Number(localStorage.getItem('pageNumber'));
         
-        
-//     }
+    //     if(target.classList.contains("arrowForward")){
+    //         if(LSpageNumber <= 0){
+    //             console.log(0)
+    //             this.arrowBack.element.classList.add('disabled')
+    //             this.arrowBack.element.style.pointerEvents = "none"
+
+    //         }
+
+    //         if((LSpageNumber > 0) && (LSpageNumber < 29)){
+    //             console.log(1)
+    //             this.arrowBack.element.classList.remove('disabled')
+    //             this.arrowBack.element.style.pointerEvents = "auto"
+
+    //         }
+    //     }
+
+    //     if(target.classList.contains("arrowBack")){
+    //         if(LSpageNumber === 29){
+    //             console.log(0)
+    //             this.arrowForward.element.classList.add('disabled')
+    //             this.arrowForward.element.style.pointerEvents = "none"
+    //         }
+
+    //         if((LSpageNumber > 0) && (LSpageNumber < 29)){
+    //             console.log(1)
+    //             this.arrowForward.element.classList.remove('disabled')
+    //             this.arrowForward.element.style.pointerEvents = "auto"
+    //         }
+    //     }            
+    // }
 }
