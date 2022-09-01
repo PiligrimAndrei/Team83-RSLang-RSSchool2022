@@ -23,11 +23,15 @@ line-height: 160%;
   margin: 2px auto;
   width: 20px;
   height: 20px;
-  background: #fefcff;
+  background-color: #fefcff;
   border-radius: 0%;
   border: 1px solid #cdcbd0;
 } 
-.words {
+.progress__bar.active {
+  background-color: red;
+}
+
+.words {  
   margin-top: 38px;
 }
 .translate__word, .current__word{

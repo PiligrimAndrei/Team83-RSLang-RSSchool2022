@@ -7,9 +7,11 @@ import { Span } from "../../components/span/span";
 import { TAG } from "../../constants/constants";
 import { IUserWord, IWord } from "../../interfaces/interfaces";
 import '../gameSprint/gameSprint.css'
+import correct from '../../assets/sounds/correct.mp3'
+import wrong from '../../assets/sounds/wrong.mp3'
 
 export class GameSprint extends Component {
-  private counter: Span;
+  private timerTag: Span;
   private counterContainer: Component;
   private scoreWordTag: Paragraph;
   private scoreWord: number = 10;
@@ -25,23 +27,23 @@ export class GameSprint extends Component {
   private words: Paragraph;
   private buttonYes: Button;
   private buttonNo: Button;
-  private timer: string = '60'
+  private timer: number = 60;
   private isValid: number = 0;
+  private counterGood: number = 0;
   group = 1;
   page = 1;
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['game_sprint']);
-    this.getWordsForGame(this.group, this.page,);
 
     this.counterContainer = new Component(
       this.element,
       "div",
       ["counterConteiner"]
     );
-    this.counter = new Span(
+    this.timerTag = new Span(
       this.counterContainer.element,
       ["timer"],
-      this.timer
+      this.timer.toString()
     );
     this.scoreContainer = new Component(
       this.element,
@@ -70,7 +72,7 @@ export class GameSprint extends Component {
         this.progressBarContainer.element,
         'div',
         ['progress__bar'],
-        '0'
+        ''
       );
     }
 
@@ -112,46 +114,139 @@ export class GameSprint extends Component {
       'submit',
       ['button__no'],
       'НЕТ'
-    );
+    )
+    this.SetTimer();
+    this.nextWord();
 
-    /*if (this.totalScoreTag.element.textContent) {
-      this.totalScore = +this.totalScoreTag.element.textContent
-    }
-    else this.totalScore = 0
-
-    if (this.scoreWordTag.element.textContent) {
-      this.scoreWord = +this.scoreWordTag.element.textContent
-    }
-    else this.scoreWord = 0*/
-
-    this.buttonYes.element.addEventListener('click', this.submitYes);
-    this.buttonNo.element.addEventListener('click', this.submitNo);
+    this.buttonYes.element.addEventListener('click', () => {
+      if (this.isValid) {
+        this.totalScore = this.totalScore + this.scoreWord;
+        this.setTotalCounter(this.totalScore)
+        this.counterGood++
+        this.setCounterGood(this.counterGood)
+        new Audio(correct).play();
+      } else {
+        this.setCounterGood(0);
+        new Audio(wrong).play();
+      }
+      this.nextWord();
+    });
+    this.buttonNo.element.addEventListener('click', () => {
+      if (!this.isValid) {
+        this.totalScore = this.totalScore + this.scoreWord;
+        this.setTotalCounter(this.totalScore)
+        this.counterGood++
+        this.setCounterGood(this.counterGood)
+        new Audio(correct).play();
+      } else {
+        this.counterGood = 0
+        this.renderCounterBar(this.counterGood)
+        new Audio(wrong).play();
+      }
+      this.nextWord();
+    });
   }
 
-  public async getWordsForGame(group: number, page: number): Promise<void> {
-    const data = await getWords(1, 1);
+  public SetTimer() {
+    console.log('Таймер ЗАПУЩЕН', this.timer);
+    let interval = setInterval(() => {
+      let timeoff = interval;
+      this.GoTimer(timeoff)
+    }, 1000)
+    console.log('Интервал', interval)
+    return interval
+  }
 
+  public GoTimer(interval: NodeJS.Timer) {
+    if (this.timer > 0) {
+      this.timer = this.timer - 1;
+      this.renderTimer(this.timer)
+    } else {
+      clearInterval(interval);
+
+    }
+  }
+
+  public renderTimer(time: number) {
+    const timerTag = document.querySelector('.timer')
+    if (timerTag) timerTag.textContent = time.toString()
+  }
+
+  public setCounterGood(counter: number): void {
+    this.counterGood = counter;
+    console.log('SetCounter', counter, (counter !== 0 && counter % 3 == 0))
+    if (counter == 0) {
+      this.scoreWord = 10;
+      this.renderWordScore(this.scoreWord)
+    }
+    if (counter !== 0 && counter % 3 == 0) {
+      this.renderCounterBar(3);
+      if (this.scoreWord < 80) {
+        this.scoreWord = this.scoreWord * 2;
+        this.renderWordScore(this.scoreWord)
+      } else {
+        this.scoreWord = 80;
+        this.renderWordScore(this.scoreWord)
+      }
+    }
+    else {
+      this.renderCounterBar(counter % 3);
+    }
+  }
+
+  public setTotalCounter(counter: number): void {
+    this.totalScore = counter;
+    this.renderTotalScore(counter)
+  }
+  public setWordCounter(counter: number): void {
+    this.scoreWord = counter;
+    this.renderWordScore(counter)
+  }
+
+  public async getWordsForGame(group: number, page: number): Promise<IWord[] | null> {
+    const data = await getWords(group, page);
     if (data) {
       const wordArr: Array<IWord> = data.words
+      return wordArr;
+    }
+    return null
+  }
+  public nextWord() {
+    this.getWordsForGame(this.group, this.page,).then((wordsArr) => {
       const random = Math.random();
-      const isValid = Math.round(random);
-      let randomWord = this.getRandomTranslateWord(wordArr)
-      let guessWord = randomWord.word
-      let guessTranslateWord = randomWord.wordTranslate
-      let userId = sessionStorage.getItem('userId')
-      let word: IUserWord = {
-        difficulty: 'true',
-        optional: {
-          learned: true
+      this.isValid = Math.round(random);
+      let guessTranslateWord, guessWord;
+      let randomWord = this.getRandomTranslateWord(wordsArr)
+      let randomWordTow = this.getRandomTranslateWord(wordsArr)
+      if (randomWord && randomWordTow) {
+        guessWord = randomWord.word
+        if (this.isValid) {
+          guessTranslateWord = randomWord.wordTranslate
+        } else guessTranslateWord = randomWordTow.wordTranslate
+
+        let userId = sessionStorage.getItem('userId')
+        let word: IUserWord = {
+          difficulty: 'true',
+          optional: {
+            learned: true
+          }
         }
+        if (userId) {
+          /*createUserWord(userId, randomWord.id, word)
+          getUserWords(userId)*/
+          this.renderWords(guessWord, guessTranslateWord)
+        } else window.location.hash = '/autorization'
       }
-      if (userId) {
-        createUserWord(userId, randomWord.id, word)
-        getUserWords(userId)
-        this.renderWords(guessWord, guessTranslateWord)
-      }
+    })
+  }
+
+  public getRandomTranslateWord(arr: IWord[] | null) {
+    if (arr) {
+      const random = Math.round(Math.random() * arr.length);
+      return arr[random]
     }
   }
+
   public renderWords(wordC: string, wordT: string) {
     let translateWord = document.querySelector('.translate__word');
     let currentWord = document.querySelector('.current__word');
@@ -163,24 +258,33 @@ export class GameSprint extends Component {
     }
   }
 
-  public getRandomTranslateWord(arr: IWord[]) {
-    const random = Math.round(Math.random() * arr.length);
-    return arr[random]
+  public renderCounterBar(counter: Number) {
+    const counterBar = document.querySelectorAll('.progress__bar')
+    console.log('counter', counter)
+    if (counter > 0) {
+      for (let i = 0; i < 3; i++) {
+        counterBar[i].classList.remove('active')
+      }
+      for (let i = 0; i < counter; i++) {
+        counterBar[i].classList.add('active')
+      }
+    } else {
+      for (let i = 0; i < 3; i++) {
+        counterBar[i].classList.remove('active')
+      }
+    }
   }
 
-  public submitYes() {
-    if (this.isValid) {
-      this.totalScore = this.totalScore + this.scoreWord
-    }
-    console.log('Очки', this.totalScore)
+  public renderTotalScore(totalScore: Number) {
+    const totalScoreTag = document.querySelector('.totalScore')
+    if (totalScoreTag) totalScoreTag.textContent = totalScore.toString()
   }
-  public submitNo() {
 
-    if (!this.isValid) {
-      this.totalScore = this.totalScore + this.scoreWord
-    }
-    console.log('Очки', this.totalScore)
+  public renderWordScore(totalScore: Number) {
+    const scoreWordTag = document.querySelector('.scoreWord')
+    if (scoreWordTag) scoreWordTag.textContent = '+' + totalScore.toString() + ' баллов за слово'
   }
+
 }
 
 
