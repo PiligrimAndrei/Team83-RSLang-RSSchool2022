@@ -33,9 +33,10 @@ export class Book extends Component {
     let numPage = document.querySelector('.pageNumber') as HTMLParagraphElement
 
     let LSdifficultyLevel = Number(localStorage.getItem('difficultyLevel'))
-    let LSpageNumber = Number(localStorage.getItem('pageNumber'))
+    let LSpageNumber = Number(localStorage.getItem('pageNumber')) 
     let LScurrentCard = Number(localStorage.getItem('currentCard'))
 
+   
     if (target.dataset.button === `groupLevel`) {
       
         let difficultyLevel: number = Number(target.dataset.difficultyLevel);
@@ -43,7 +44,6 @@ export class Book extends Component {
           return
         }
         let response = await getWords(difficultyLevel);
-        console.log(response?.words)
         if( response ){
           let word: IWord  = response?.words[0]
           this.bookCards?.destroy()
@@ -58,11 +58,10 @@ export class Book extends Component {
     else {
       if ( target.hasAttribute('data-id')) return;
       let response = await getWords(LSdifficultyLevel, LSpageNumber);
-      console.log(response?.words)
       if( response){
         let word: IWord  = response?.words[LScurrentCard]
         this.bookCards = new BookCards(this.element, response.words, word);
-        
+        numPage.innerHTML = `${LSpageNumber + 1}`
       }
     }
   }
@@ -71,9 +70,14 @@ export class Book extends Component {
     let LSdifficultyLevel = Number(localStorage.getItem('difficultyLevel'))
     let LSpageNumber = Number(localStorage.getItem('pageNumber'))
     let LScurrentCard = Number(localStorage.getItem('currentCard'))
+    
+    
 
     let target = event.target as HTMLElement;
     let nextPage = LSpageNumber + 1
+    let prePage = LSpageNumber - 1
+    
+
     if(target.classList.contains("arrowForward")){
       let numPage = document.querySelector('.pageNumber') as HTMLParagraphElement
       let response = await getWords(LSdifficultyLevel, nextPage);
@@ -83,12 +87,23 @@ export class Book extends Component {
         let word: IWord  = response?.words[LScurrentCard]
         this.bookCards = new BookCards(this.element, response.words, word);
       }
-      numPage.innerHTML = `${1 + nextPage}`
+      numPage.innerHTML = `${nextPage +1}`
       localStorage.setItem('pageNumber', `${nextPage}`);
       localStorage.setItem('currentCard', `0`);
-
     }
-    
+    if(target.classList.contains("arrowBack")){
+      let numPage = document.querySelector('.pageNumber') as HTMLParagraphElement
+      let response = await getWords(LSdifficultyLevel, prePage);
+      if( response){
+        console.log(response.words)
+        this.bookCards?.destroy()
+        let word: IWord  = response?.words[LScurrentCard]
+        this.bookCards = new BookCards(this.element, response.words, word);
+      }
+      numPage.innerHTML = `${ LSpageNumber}`
+      localStorage.setItem('pageNumber', `${prePage}`);
+      localStorage.setItem('currentCard', `0`);
+    }
   }
   
 
