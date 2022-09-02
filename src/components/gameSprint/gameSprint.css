@@ -1,8 +1,8 @@
-.game_sprint{
+.game_sprint_window{
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  width: 70%;
+  width: 100%;
   justify-content: center;
   align-items: center;
 }
@@ -12,6 +12,11 @@ font-style: normal;
 font-weight: 700;
 font-size: 25px;
 line-height: 160%;
+background-color: #97D9E9 ;
+border-radius: 50%;
+border: 2px solid  #97D9E9;
+padding: 2px;
+
 }
 .progress__bar-container{
   display: flex;
@@ -28,7 +33,7 @@ line-height: 160%;
   border: 1px solid #cdcbd0;
 } 
 .progress__bar.active {
-  background-color: red;
+  background-color: #97D9E9;
 }
 
 .words {  
