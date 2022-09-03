@@ -71,3 +71,9 @@ export interface IFetchOptions {
   };
   body?: string
 }
+
+export interface IWordStaticGame {
+  word: IWord;
+  correct: boolean;
+  date: number;
+}

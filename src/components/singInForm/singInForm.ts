@@ -23,7 +23,7 @@ export class SingInForm extends Component {
     private linkToSingUp: Paragraph;
     private textToSingUp: Paragraph;
 
-    constructor(parentNode: HTMLElement){
+    constructor(parentNode: HTMLElement) {
         super(parentNode, "div", ['autotizationFields'])
 
         this.headingAutorization = new Paragraph(
@@ -82,14 +82,14 @@ export class SingInForm extends Component {
         };
 
         signIn(form).then(() => {
-            const token = sessionStorage.getItem('token');
-            const refreshToken = sessionStorage.getItem('refreshToken');
-            const userId = sessionStorage.getItem('userId');
-            const tokenDate = sessionStorage.getItem('tokenDate');
+            const token = localStorage.getItem('token');
+            const refreshToken = localStorage.getItem('refreshToken');
+            const userId = localStorage.getItem('userId');
+            const tokenDate = localStorage.getItem('tokenDate');
 
             console.log("token", token, "refreshToken", refreshToken, 'UserId:', userId, 'Date', tokenDate)
 
-            let isAutorization = sessionStorage.getItem('isAutorization')
+            let isAutorization = localStorage.getItem('isAutorization')
             let exit = (document.querySelector('.nav__button') as HTMLInputElement);
             exit.textContent = 'Выйти'
             isAutorization = 'true'
@@ -101,7 +101,7 @@ export class SingInForm extends Component {
     }
     reverseExit() {
         console.log('reverse load')
-        let isAutorization = sessionStorage.getItem('isAutorization')
+        let isAutorization = localStorage.getItem('isAutorization')
         let exit = (document.querySelector('.nav__button') as HTMLInputElement);
         if (exit.textContent === 'Выйти') {
             exit.textContent = 'Войти';

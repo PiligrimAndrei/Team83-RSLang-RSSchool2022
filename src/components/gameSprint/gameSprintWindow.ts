@@ -5,12 +5,17 @@ import { Component } from "../../components/components";
 import { Paragraph } from "../../components/paragraph/paragraph";
 import { Span } from "../../components/span/span";
 import { TAG } from "../../constants/constants";
-import { IUserWord, IWord } from "../../interfaces/interfaces";
+import { ModalWindow } from "../../components/modalWindow/modalWindow";
+import { IUserWord, IWord, IWordStaticGame } from "../../interfaces/interfaces";
 import '../gameSprint/gameSprint.css'
 import correct from '../../assets/sounds/correct.mp3'
 import wrong from '../../assets/sounds/wrong.mp3'
+import { Word } from "../word/word";
+import { touchRippleClasses } from "@mui/material";
 
-export class GameSprint extends Component {
+
+export class GameSprintWindow extends Component {
+  private words: IWord[];
   private timerTag: Span;
   private counterContainer: Component;
   private scoreWordTag: Paragraph;
@@ -24,16 +29,20 @@ export class GameSprint extends Component {
   private translateWord: Span;
   private currentWord: Span;
   private defis: Span;
-  private words: Paragraph;
+  private wordsTag: Paragraph;
   private buttonYes: Button;
   private buttonNo: Button;
-  private timer: number = 60;
+  private timer: number = 20;
   private isValid: number = 0;
   private counterGood: number = 0;
-  group = 1;
-  page = 1;
-  constructor(parentNode: HTMLElement) {
-    super(parentNode, 'div', ['game_sprint']);
+  private guessWordId: IWord;
+  private arrayStaticWords: Array<IWordStaticGame>;
+  private modalWindow: ModalWindow;
+
+  constructor(parentNode: HTMLElement, words: Array<IWord>) {
+    super(parentNode, 'div', ['game_sprint_window']);
+
+    this.words = words;
 
     this.counterContainer = new Component(
       this.element,
@@ -43,7 +52,7 @@ export class GameSprint extends Component {
     this.timerTag = new Span(
       this.counterContainer.element,
       ["timer"],
-      this.timer.toString()
+      '60'
     );
     this.scoreContainer = new Component(
       this.element,
@@ -76,23 +85,23 @@ export class GameSprint extends Component {
       );
     }
 
-    this.words = new Paragraph(
+    this.wordsTag = new Paragraph(
       this.element,
       ['words'],
       ''
     )
     this.translateWord = new Span(
-      this.words.element,
+      this.wordsTag.element,
       ['translate__word'],
       ' '
     );
     this.defis = new Span(
-      this.words.element,
+      this.wordsTag.element,
       ['defis'],
       ' - '
     );
     this.currentWord = new Span(
-      this.words.element,
+      this.wordsTag.element,
       ['current__word'],
       ' '
     );
@@ -115,8 +124,29 @@ export class GameSprint extends Component {
       ['button__no'],
       'НЕТ'
     )
+    this.guessWordId = {
+      id: '',
+      group: 0,
+      page: 0,
+      word: '',
+      image: '',
+      audio: '',
+      audioMeaning: '',
+      audioExample: '',
+      textMeaning: '',
+      textExample: '',
+      transcription: '',
+      wordTranslate: '',
+      textMeaningTranslate: '',
+      textExampleTranslate: '',
+    };
+    this.arrayStaticWords = [{ word: this.guessWordId, correct: true, date: 0 }];
     this.SetTimer();
     this.nextWord();
+    this.modalWindow = new ModalWindow(
+      this.element,
+      this.arrayStaticWords
+    )
 
     this.buttonYes.element.addEventListener('click', () => {
       if (this.isValid) {
@@ -125,9 +155,11 @@ export class GameSprint extends Component {
         this.counterGood++
         this.setCounterGood(this.counterGood)
         new Audio(correct).play();
+        this.arrayStaticWords.push({ word: this.guessWordId, correct: true, date: (Date.now()) })
       } else {
         this.setCounterGood(0);
         new Audio(wrong).play();
+        this.arrayStaticWords.push({ word: this.guessWordId, correct: false, date: (Date.now()) })
       }
       this.nextWord();
     });
@@ -138,10 +170,12 @@ export class GameSprint extends Component {
         this.counterGood++
         this.setCounterGood(this.counterGood)
         new Audio(correct).play();
+        this.arrayStaticWords.push({ word: this.guessWordId, correct: true, date: (Date.now()) })
       } else {
         this.counterGood = 0
         this.renderCounterBar(this.counterGood)
         new Audio(wrong).play();
+        this.arrayStaticWords.push({ word: this.guessWordId, correct: false, date: (Date.now()) })
       }
       this.nextWord();
     });
@@ -163,14 +197,11 @@ export class GameSprint extends Component {
       this.renderTimer(this.timer)
     } else {
       clearInterval(interval);
-
+      this.onFinish();
     }
   }
 
-  public renderTimer(time: number) {
-    const timerTag = document.querySelector('.timer')
-    if (timerTag) timerTag.textContent = time.toString()
-  }
+
 
   public setCounterGood(counter: number): void {
     this.counterGood = counter;
@@ -212,33 +243,35 @@ export class GameSprint extends Component {
     return null
   }
   public nextWord() {
-    this.getWordsForGame(this.group, this.page,).then((wordsArr) => {
-      const random = Math.random();
+    console.log('Слова', this.words)
+    //this.getWordsForGame(this.group, this.page,).then((wordsArr) => {
+    let wordsArr = this.words
+    const random = Math.random();
+    this.isValid = Math.round(random);
+    let guessTranslateWord, guessWord;
+    let randomWord = this.getRandomTranslateWord(wordsArr)
+    let randomWordTow = this.getRandomTranslateWord(wordsArr)
+    if (randomWord && randomWordTow) {
+      this.guessWordId = randomWord;
+      guessWord = randomWord.word
+      if (this.isValid) {
+        guessTranslateWord = randomWord.wordTranslate
+      } else guessTranslateWord = randomWordTow.wordTranslate
 
-      this.isValid = Math.round(random);
-      let guessTranslateWord, guessWord;
-      let randomWord = this.getRandomTranslateWord(wordsArr)
-      let randomWordTow = this.getRandomTranslateWord(wordsArr)
-      if (randomWord && randomWordTow) {
-        guessWord = randomWord.word
-        if (this.isValid) {
-          guessTranslateWord = randomWord.wordTranslate
-        } else guessTranslateWord = randomWordTow.wordTranslate
-
-        let userId = sessionStorage.getItem('userId')
-        let word: IUserWord = {
-          difficulty: 'true',
-          optional: {
-            learned: 0
-          }
+      let userId = localStorage.getItem('userId')
+      let word: IUserWord = {
+        difficulty: 'true',
+        optional: {
+          learned: true
         }
-        if (userId) {
-          /*createUserWord(userId, randomWord.id, word)
-          getUserWords(userId)*/
-          this.renderWords(guessWord, guessTranslateWord)
-        } else window.location.hash = '/autorization'
       }
-    })
+      if (userId) {
+        /*createUserWord(userId, randomWord.id, word)
+        getUserWords(userId)*/
+        this.renderWords(guessWord, guessTranslateWord)
+      } else window.location.hash = '/autorization'
+    }
+    // })
   }
 
   public getRandomTranslateWord(arr: IWord[] | null) {
@@ -285,7 +318,19 @@ export class GameSprint extends Component {
     const scoreWordTag = document.querySelector('.scoreWord')
     if (scoreWordTag) scoreWordTag.textContent = '+' + totalScore.toString() + ' баллов за слово'
   }
+  public renderTimer(time: number) {
+    const timerTag = document.querySelector('.timer')
+    if (timerTag) {
+      if (time < 10) timerTag.textContent = '0' + time.toString()
+      else timerTag.textContent = time.toString()
+    }
+  }
 
+  public onFinish() {
+    this.modalWindow = new ModalWindow(
+      this.counterContainer.element,
+      this.arrayStaticWords
+    )
+    return this.modalWindow
+  }
 }
-
-

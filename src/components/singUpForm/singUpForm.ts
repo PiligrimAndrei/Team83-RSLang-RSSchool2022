@@ -88,6 +88,5 @@ export class SingUpForm extends Component {
         console.log(typeof form.password)
         createUser(form);
         window.location.hash = '/book';
-        console.log('window.location.hash', window.location.hash)
     }
 }
