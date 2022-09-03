@@ -52,7 +52,7 @@ export interface ICreateUser {
 export interface IUserWord {
   difficulty: string;
   optional: {
-    learned: boolean;
+    learned: number;
     countUse?: number
     counteCorrect?: number
     countUseSprint?: number

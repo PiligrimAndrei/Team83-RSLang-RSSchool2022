@@ -65,26 +65,13 @@
     mask: url('../../assets/learnedIcoCard.svg') no-repeat center;
 }
 
-.hardIcoCard .active{
-    background-color: var(--main-text-color);
-    opacity: 100%;
-    -webkit-mask: url('../../assets/hardIcoCard.svg') no-repeat center;
-    mask: url('../../assets/hardIcoCard.svg') no-repeat center;
-}
-.learnedIcoCard .active{
-    background-color: var(--main-text-color);
-    opacity: 100%;
-    -webkit-mask: url('../../assets/learnedIcoCard.svg') no-repeat center;
-    mask: url('../../assets/learnedIcoCard.svg') no-repeat center;
-}
-
-.hardIcoCard .chosenActive{
+.hardIcoCard.active{
     background-color: var(--second-text-color);
     opacity: 100%;
     -webkit-mask: url('../../assets/hardIcoCard.svg') no-repeat center;
     mask: url('../../assets/hardIcoCard.svg') no-repeat center;
 }
-.learnedIcoCard .chosenActive{
+.learnedIcoCard.active{
     background-color: var(--second-text-color);
     opacity: 100%;
     -webkit-mask: url('../../assets/learnedIcoCard.svg') no-repeat center;

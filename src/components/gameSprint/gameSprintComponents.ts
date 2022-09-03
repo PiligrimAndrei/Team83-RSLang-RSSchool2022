@@ -142,7 +142,7 @@ export class GameSprint extends Component {
       let word: IUserWord = {
         difficulty: 'true',
         optional: {
-          learned: true
+          learned: 3
         }
       }
       if (userId) {
