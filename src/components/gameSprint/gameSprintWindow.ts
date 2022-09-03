@@ -266,8 +266,8 @@ export class GameSprintWindow extends Component {
         }
       }
       if (userId) {
-        /*createUserWord(userId, randomWord.id, word)
-        getUserWords(userId)*/
+        /*createUserWord(userId, randomWord.id, word)*/
+        getUserWords(userId)
         this.renderWords(guessWord, guessTranslateWord)
       } else window.location.hash = '/autorization'
     }
