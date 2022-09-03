@@ -63,7 +63,8 @@ export interface IUserWord {
 }
 
 export interface IFetchOptions {
-  method: string
+  method: string;
+  withCredentials?: boolean;
   headers: {
     Authorization: string;
     Accept: string;

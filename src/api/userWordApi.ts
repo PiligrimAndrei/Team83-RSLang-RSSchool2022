@@ -6,7 +6,7 @@ export const createUserWord = async (userId: string, wordId: string, word: IUser
   const token = sessionStorage.getItem('token')
   const data = await fetchWithAutorization(`${BASEURL}/users/${userId}/words/${wordId}`, {
     method: 'POST',
-    /*withCredentials: true,*/
+    withCredentials: true,
     headers: {
       'Authorization': `Bearer ${token}`,
       'Accept': 'application/json',
@@ -15,14 +15,14 @@ export const createUserWord = async (userId: string, wordId: string, word: IUser
     body: JSON.stringify(word)
   });
   const content = await data.json();
-  return(content)
+  return (content)
 };
 
 export const getUserWords = async (userId: string) => {
   const token = sessionStorage.getItem('token')
   const data = await fetchWithAutorization(`${BASEURL}/users/${userId}/words`, {
     method: 'GET',
-    /*withCredentials: true,*/
+    withCredentials: true,
     headers: {
       'Authorization': `Bearer ${token}`,
       'Accept': 'application/json',
@@ -30,7 +30,7 @@ export const getUserWords = async (userId: string) => {
     }
   });
   const content = await data.json();
-  return(content)
+  return (content)
 }
 
 export const updateUserWord = async (userId: string, wordId: string, word: IUserWord) => {
@@ -59,8 +59,8 @@ export const getUserWord = async (userId: string, wordId: string) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    
+
   });
   const content = await data.json();
-  return(content)
+  return (content)
 };
