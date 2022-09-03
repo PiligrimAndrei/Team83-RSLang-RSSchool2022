@@ -1,3 +1,5 @@
+import { IUserWord } from "../interfaces/interfaces"
+
 export const DEVELOPERS = [
   {
     'fullname': 'Анастасия Халмаматова',
@@ -78,3 +80,15 @@ export const STATISTIC_CONTENT = [
   },
 ]
 
+export let commonUserWord: IUserWord = {
+  difficulty: "",
+  optional: {
+    learned: 0,
+    countUse: 0,
+    counteCorrect: 0,
+    countUseSprint: 0,
+    countCorrectSprint: 0,
+    countUseAudiocall: 0,
+    countCorrectAudiocall: 0,
+  }
+}

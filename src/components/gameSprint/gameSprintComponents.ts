@@ -214,6 +214,7 @@ export class GameSprint extends Component {
   public nextWord() {
     this.getWordsForGame(this.group, this.page,).then((wordsArr) => {
       const random = Math.random();
+
       this.isValid = Math.round(random);
       let guessTranslateWord, guessWord;
       let randomWord = this.getRandomTranslateWord(wordsArr)
@@ -228,7 +229,7 @@ export class GameSprint extends Component {
         let word: IUserWord = {
           difficulty: 'true',
           optional: {
-            learned: true
+            learned: 0
           }
         }
         if (userId) {

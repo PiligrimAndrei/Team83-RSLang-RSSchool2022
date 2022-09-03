@@ -85,6 +85,7 @@ export class SingUpForm extends Component {
             'email': (document.querySelector('.inputEmailRegistration') as HTMLInputElement).value,
             'password': (document.querySelector('.inputPasswordRegistration') as HTMLInputElement).value,
         };
+        console.log(typeof form.password)
         createUser(form);
         window.location.hash = '/book';
     }

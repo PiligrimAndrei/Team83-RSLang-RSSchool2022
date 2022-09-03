@@ -1,9 +1,10 @@
 import { Component } from "../components";
 import { Paragraph } from "../paragraph/paragraph";
 import { Image } from "../image/image";
-import { MAX_CARDS_ON_PAGE, DIFFICULTIES } from "../../constants/data";
+import { MAX_CARDS_ON_PAGE, DIFFICULTIES, commonUserWord } from "../../constants/data";
 import './cards.css'
 import { IWord } from "../../interfaces/interfaces";
+import { createUserWord, getUserWord, updateUserWord } from "../../api/userWordApi";
 
 export class Cards extends Component {
     private wordNameCard: Paragraph | undefined;
@@ -58,7 +59,11 @@ export class Cards extends Component {
             this.learnedIcoCard.element.dataset.id = cards[i].id
             this.wordNameCard.element.dataset.id = cards[i].id
             
-            this.allCards.push(this.cardContainer)         
+            this.allCards.push(this.cardContainer)   
+
+            this.hardIcoCard.element.onclick = this.hardWord.bind(this)
+            this.learnedIcoCard.element.onclick = this.learnedWord.bind(this)
+
         }
 
         this.allCards[0].element.classList.add(`active${DIFFICULTIES[cards[0].group]}`)
@@ -73,6 +78,49 @@ export class Cards extends Component {
                 card.element.classList.add(`active${DIFFICULTIES[cards[0].group]}`) 
             })
         })
+    }
+    async hardWord(event: Event){
+        let target = event.target as HTMLImageElement
+        const userId = sessionStorage.getItem('userId');
+
+        let wordId = target.dataset.id
+        let response = await getUserWord(userId!, wordId!);
+        if(response) {
+        response.difficulty = "hard" 
+        let updateResponse = await updateUserWord(userId!, wordId!, response);
+        if(updateResponse){
+            target.classList.add('active')
+        }
+        } else { 
+        let body = Object.assign({}, commonUserWord)
+        body.difficulty = "hard"
+        let response = await createUserWord(userId!, wordId!, body);
+        if (response) {
+            target.classList.add('active')
+        }
+        }
+
+    }
+    async learnedWord(event: Event){
+        let target = event.target as HTMLImageElement
+        const userId = sessionStorage.getItem('userId');
+
+        let wordId = target.dataset.id
+        let response = await getUserWord(userId!, wordId!);
+        if(response) {
+        response.optional.learned += 1 
+        let updateResponse = await updateUserWord(userId!, wordId!, response);
+        if(updateResponse){
+            target.classList.add('active')
+        }
+        } else { 
+        let body = Object.assign({}, commonUserWord)
+        body.optional.learned = 3
+        let response = await createUserWord(userId!, wordId!, body);
+        if (response) {
+            target.classList.add('active')
+        }
+        }
     }
     
 }
