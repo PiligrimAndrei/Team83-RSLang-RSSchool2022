@@ -52,11 +52,11 @@ export const signIn = async (user: SignIn): Promise<ISignIn | null> => {
   return null
 }
 function saveToken(token: string, refreshToken: string, userId: string) {
-  sessionStorage.setItem('token', token);
-  sessionStorage.setItem('refreshToken', refreshToken);
-  sessionStorage.setItem('tokenDate', Date.now().toString())
-  sessionStorage.setItem('userId', userId);
-  sessionStorage.setItem('isAutorization', 'true');
+  localStorage.setItem('token', token);
+  localStorage.setItem('refreshToken', refreshToken);
+  localStorage.setItem('tokenDate', Date.now().toString())
+  localStorage.setItem('userId', userId);
+  localStorage.setItem('isAutorization', 'true');
 }
 
 export const getRefreshToken = async (userId: string, refreshToken: string) => {
@@ -75,10 +75,10 @@ export const getRefreshToken = async (userId: string, refreshToken: string) => {
 }
 
 export const fetchWithAutorization = async (url: string, options?: IFetchOptions) => {
-  const token = sessionStorage.getItem('token');
-  const refreshToken = sessionStorage.getItem('refreshToken');
-  const userId = sessionStorage.getItem('userId');
-  const tokenDate = sessionStorage.getItem('tokenDate');
+  const token = localStorage.getItem('token');
+  const refreshToken = localStorage.getItem('refreshToken');
+  const userId = localStorage.getItem('userId');
+  const tokenDate = localStorage.getItem('tokenDate');
   console.log(Date.now() - (Number(tokenDate)))
   if (Date.now() - (Number(tokenDate)) <= 3600) {
     if (userId && refreshToken) {
