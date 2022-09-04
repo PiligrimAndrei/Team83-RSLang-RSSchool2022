@@ -32,7 +32,7 @@ export const getWord = async (wordID: string): Promise<IWord | null> => {
 }
 
 export const signIn = async (user: SignIn): Promise<ISignIn | null> => {
-  try {
+try {
     const data = await fetch(`${BASEURL}/signin`,
       {
         method: 'POST',
@@ -86,7 +86,7 @@ export const fetchWithAutorization = async (url: string, options?: IFetchOptions
   const refreshToken = localStorage.getItem('refreshToken');
   const userId = localStorage.getItem('userId');
   const tokenDate = localStorage.getItem('tokenDate');
-  console.log(Date.now() - (Number(tokenDate)))
+  // console.log(Date.now() - (Number(tokenDate)))
   if (Date.now() - (Number(tokenDate)) <= 3600) {
     if (userId && refreshToken) {
       const newToken = getRefreshToken(userId, refreshToken)

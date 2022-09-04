@@ -40,6 +40,9 @@ export class GamesWindow extends Component {
       ["linkToAudioGame", "linkToGame"],
       "Игра “АУДИОВЫЗОВ”"
     );
+    this.linkToAudioGame.element.addEventListener('click', () => {
+      localStorage.setItem('fromWhereToStart','games')
+    })
 
     this.linkToSprintGame = new Link(
       this.element,
@@ -47,5 +50,21 @@ export class GamesWindow extends Component {
       ["linkToSprintGame", "linkToGame"],
       "Игра “СПРИНТ”"
     );
+    this.linkToSprintGame.element.addEventListener('click', () => {
+      localStorage.setItem('fromWhereToStart','games')
+    })
+
+    this.langLevelBtns.map((button,index) => { 
+      button.element.dataset.button = "groupLevel";
+      button.element.dataset.difficultyLevel = `${index}`;
+      button.element.addEventListener('click', ()=>{ 
+          localStorage.removeItem('onpage');
+          this.langLevelBtns.map((button,index) => { 
+              button.element.classList.remove("active") 
+          })
+          button.element.classList.add("active")
+          localStorage.setItem('difficultyLevel',`${index}`)
+      })
+  })
   }
 }

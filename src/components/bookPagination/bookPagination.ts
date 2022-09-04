@@ -47,7 +47,9 @@ export class BookPagination extends Component{
     changeArrowStyle(event: Event){
         let LSpageNumber =  Number(localStorage.getItem('pageNumber'));
         let target = event.target as HTMLElement;
-
+        if(localStorage.getItem('onpage') === 'user'){
+            return
+        }
         if(target.classList.contains("arrowForward")){
             if(LSpageNumber === 0){
                 this.arrowBack.element.classList.remove('disabled')
@@ -69,38 +71,5 @@ export class BookPagination extends Component{
             }
         }
     }
-    // async changeArrowStyle(event: Event){
-    //     let target = event.target as HTMLElement;
-    //     let LSpageNumber =  Number(localStorage.getItem('pageNumber'));
-        
-    //     if(target.classList.contains("arrowForward")){
-    //         if(LSpageNumber <= 0){
-    //             console.log(0)
-    //             this.arrowBack.element.classList.add('disabled')
-    //             this.arrowBack.element.style.pointerEvents = "none"
-
-    //         }
-
-    //         if((LSpageNumber > 0) && (LSpageNumber < 29)){
-    //             console.log(1)
-    //             this.arrowBack.element.classList.remove('disabled')
-    //             this.arrowBack.element.style.pointerEvents = "auto"
-
-    //         }
-    //     }
-
-    //     if(target.classList.contains("arrowBack")){
-    //         if(LSpageNumber === 29){
-    //             console.log(0)
-    //             this.arrowForward.element.classList.add('disabled')
-    //             this.arrowForward.element.style.pointerEvents = "none"
-    //         }
-
-    //         if((LSpageNumber > 0) && (LSpageNumber < 29)){
-    //             console.log(1)
-    //             this.arrowForward.element.classList.remove('disabled')
-    //             this.arrowForward.element.style.pointerEvents = "auto"
-    //         }
-    //     }            
-    // }
 }
+

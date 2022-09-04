@@ -2,6 +2,7 @@ import { Component } from '../components';
 import { Button } from '../button/button';
 import { DIFFICULTIES } from '../../constants/data';
 import './bookNavigation.css'
+import { buttonText } from './consts';
 
 export class BookNavigation extends Component {
     private hardWordsBtn: Button;
@@ -16,22 +17,25 @@ export class BookNavigation extends Component {
             this.element,
             'button',
             ['hardWordsBtn'],
-            'Сложные слова'// TODO in const.ts in this folder
+            buttonText.hard
         )
+        this.hardWordsBtn.element.dataset.button = 'hardword'
 
         this.learnedWordsBtn = new Button(
             this.element,
             'button',
             ['learnedWordsBtn'],
-            'Изученные слова'
+            buttonText.learned
         )
+        this.learnedWordsBtn.element.dataset.button = 'learnedword'
 
         this.settingsBtn = new Button(
             this.element,
             'button',
             ['settingsBtn'],
-            'Настройка'
+            buttonText.settings
         )
+        this.settingsBtn.element.addEventListener('click', () => alert("Sorry, there is no settings"))
 
         this.langLevelBtns = []
         
@@ -44,19 +48,39 @@ export class BookNavigation extends Component {
             )
             this.langLevelBtns.push(langLevelBtn)
         })
-
-        this.langLevelBtns[Number(localStorage.getItem('difficultyLevel'))].element.classList.add("active")
-        this.langLevelBtns.map((button,index) => {
+        if (localStorage.getItem('onpage') === 'user') {
+            localStorage.getItem('userdifficulty') === 'hard' ? 
+              this.hardWordsBtn.element.classList.add('active') : 
+              this.learnedWordsBtn.element.classList.add('active')
+        } else {
+            this.langLevelBtns[Number(localStorage.getItem('difficultyLevel'))].element.classList.add("active")
+        }
+        this.langLevelBtns.map((button,index) => { 
             button.element.dataset.button = "groupLevel";
             button.element.dataset.difficultyLevel = `${index}`;
             button.element.addEventListener('click', ()=>{ 
+                localStorage.removeItem('onpage');
                 this.langLevelBtns.map((button,index) => { 
                     button.element.classList.remove("active") 
                 })
-                button.element.classList.add("active") 
+                button.element.classList.add("active")
+                this.learnedWordsBtn.element.classList.remove('active');
+                this.hardWordsBtn.element.classList.remove('active');       
             })
         })
-      
+        
+        this.hardWordsBtn.element.addEventListener("click", () => {
+            this.langLevelBtns.map( (button) => button.element.classList.remove('active'))
+            this.hardWordsBtn.element.classList.add('active');
+            this.learnedWordsBtn.element.classList.remove('active');
+
+        })
+
+        this.learnedWordsBtn.element.addEventListener("click", () => {
+            this.langLevelBtns.map( (button) => button.element.classList.remove('active'))
+            this.hardWordsBtn.element.classList.remove('active');
+            this.learnedWordsBtn.element.classList.add('active');
+        })
 
         
     }

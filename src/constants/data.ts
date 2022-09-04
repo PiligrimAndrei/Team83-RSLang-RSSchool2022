@@ -81,7 +81,7 @@ export const STATISTIC_CONTENT = [
 ]
 
 export let commonUserWord: IUserWord = {
-  difficulty: "",
+  difficulty: "easy", //не хотел ставить easy но апи требует чтобы пустых кавычек не было
   optional: {
     learned: 0,
     countUse: 0,

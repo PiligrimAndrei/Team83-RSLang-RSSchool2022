@@ -45,6 +45,9 @@ export const updateUserWord = async (userId: string, wordId: string, word: IUser
     },
     body: JSON.stringify(word)
   });
+  if(!data.ok) {
+    return false
+  }
   const content = await data.json();
   return (content)
 };
@@ -61,6 +64,9 @@ export const getUserWord = async (userId: string, wordId: string) => {
     },
 
   });
+  if(!data.ok) {
+    return false
+  } 
   const content = await data.json();
   return (content)
 };
