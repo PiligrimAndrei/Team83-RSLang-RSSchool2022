@@ -262,12 +262,12 @@ export class GameSprintWindow extends Component {
       let word: IUserWord = {
         difficulty: 'true',
         optional: {
-          learned: 3
+        learned: 0
         }
       }
       if (userId) {
-        /*createUserWord(userId, randomWord.id, word)
-        getUserWords(userId)*/
+        /*createUserWord(userId, randomWord.id, word)*/
+        getUserWords(userId)
         this.renderWords(guessWord, guessTranslateWord)
       } else window.location.hash = '/autorization'
     }
