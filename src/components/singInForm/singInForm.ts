@@ -71,30 +71,39 @@ export class SingInForm extends Component {
             ['linkToSingUp'],
             ' Зарегистрируйтесь'
         )
+
+        this.inputPassword.element.setAttribute('pattern', '[a-zA-Z0-9]{8,}')
         this.formAutorization.element.addEventListener('submit', this.submitFormAutorization)
+        this.enterButton.element.addEventListener('blur', this.refreshEnterButton)
         this.headingAutorization.element.addEventListener('load', this.reverseExit)
     }
     submitFormAutorization(event: Event) {
-
         const form: SignIn = {
             'email': (document.querySelector('.inputEmail') as HTMLInputElement).value,
             'password': (document.querySelector('.inputPassword') as HTMLInputElement).value,
         };
+        console.log(form);
 
-        signIn(form).then(() => {
-            const token = localStorage.getItem('token');
-            const refreshToken = localStorage.getItem('refreshToken');
-            const userId = localStorage.getItem('userId');
-            const tokenDate = localStorage.getItem('tokenDate');
+        signIn(form).then((res) => {
+            console.log('ОТВЕТ:', res)
+            if (res) {
+                const token = localStorage.getItem('token');
+                const refreshToken = localStorage.getItem('refreshToken');
+                const userId = localStorage.getItem('userId');
+                const tokenDate = localStorage.getItem('tokenDate');
 
-            console.log("token", token, "refreshToken", refreshToken, 'UserId:', userId, 'Date', tokenDate)
+                console.log("token", token, "refreshToken", refreshToken, 'UserId:', userId, 'Date', tokenDate)
 
-            let isAutorization = localStorage.getItem('isAutorization')
-            let exit = (document.querySelector('.nav__button') as HTMLInputElement);
-            exit.textContent = 'Выйти'
-            isAutorization = 'true'
-            window.location.hash = '/games';
-
+                let isAutorization = localStorage.getItem('isAutorization')
+                let exit = (document.querySelector('.nav__button') as HTMLInputElement);
+                exit.textContent = 'Выйти'
+                isAutorization = 'true'
+                window.location.hash = '/games';
+            } else {
+                let submit = (document.querySelector('.submitBtnAutorization') as HTMLInputElement);
+                submit.style.borderColor = 'red'
+                submit.textContent = 'Некорретный логин/пароль'
+            }
         });
 
 
@@ -107,5 +116,11 @@ export class SingInForm extends Component {
             exit.textContent = 'Войти';
             isAutorization = 'false'
         }
+    }
+
+    refreshEnterButton() {
+        let submit = (document.querySelector('.submitBtnAutorization') as HTMLInputElement);
+        submit.style.borderColor = 'black'
+        submit.textContent = 'Войти'
     }
 }

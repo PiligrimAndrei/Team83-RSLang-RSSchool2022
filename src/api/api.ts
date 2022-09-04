@@ -32,24 +32,31 @@ export const getWord = async (wordID: string): Promise<IWord | null> => {
 }
 
 export const signIn = async (user: SignIn): Promise<ISignIn | null> => {
-  const data = await fetch(`${BASEURL}/signin`,
-    {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(user)
-    });
-  const res = await data.json();
-  if (data.status === RESPONSE.OK) {
-    saveToken(res.token, res.refreshToken, res.userId);
-    return res
-  }
-  if (data.status === RESPONSE.Uncorrect) {
+  try {
+    const data = await fetch(`${BASEURL}/signin`,
+      {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+      });
+    const res = await data.json();
+    console.log('ОТВЕТ:', data.status)
+    if (data.status === RESPONSE.OK) {
+      saveToken(res.token, res.refreshToken, res.userId);
+      return res
+    }
+    if (data.status === RESPONSE.Uncorrect) {
+      return null
+    }
     return null
   }
-  return null
+  catch (err) {
+    console.log("НЕПРАВИЛЬНЫЙ ЛОГИН/ПАРОЛЬ");
+    return null
+  }
 }
 function saveToken(token: string, refreshToken: string, userId: string) {
   localStorage.setItem('token', token);
