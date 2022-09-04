@@ -57,20 +57,26 @@ export class Header extends Component {
         this.navContainer.element,
         '#/autorization',
         ['nav__item', 'nav__button'],
-        'Вход',
+        'Войти',
       );
-
+    if (localStorage.getItem('isAutorization') == 'true') this.linkToSignIn.element.textContent = 'Выйти'
     this.navItems = [this.linkToMain, this.linkToBook, this.linkToGames, this.linkToStatistic, this.linkToSignIn];
 
-    /*this.linkToSignIn.onclick ('click', () => {
-      let isAutorization = sessionStorage.getItem('isAutorization')
-      let exit = (document.querySelector('.nav__button') as HTMLInputElement);
+    this.linkToSignIn.element.addEventListener('click', () => {
+      let isAutorization = localStorage.getItem('isAutorization')
+      /*let exit = (document.querySelector('.nav__button') as HTMLInputElement);
       if (exit.textContent === 'Выйти') {
         exit.textContent = 'Войти';
         isAutorization = 'false'
       }
-      window.location.hash = '/autorization'
-    })*/
+      window.location.hash = '/autorization'*/
+      console.log('isAutorization', isAutorization)
+      if (isAutorization == 'true') {
+        this.linkToSignIn.element.textContent = 'Войти';
+        localStorage.clear();
+      }
+      window.location.hash = '/autorization';
+    })
 
     window.addEventListener('hashchange', () =>
       this.updateActive(this.navItems),
