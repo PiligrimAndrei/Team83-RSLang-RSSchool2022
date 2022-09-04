@@ -5,7 +5,7 @@ import { Span } from '../span/span';
 import { WORD_POPUP_CORRECT_COUNT } from '../../constants/data';
 import { WORD_POPUP_ERROR_COUNT } from '../../constants/data';
 import './word.css'
-import { IWord } from '../../interfaces/interfaces';
+import { IWord, IUserWord } from '../../interfaces/interfaces';
 import { getWord, getWords } from '../../api/api';
 
 export class Word extends Component {
@@ -29,7 +29,7 @@ export class Word extends Component {
     private popupCorrectCount: Paragraph;
     private popupErrorCount: Paragraph;
 
-    constructor( parentNode: HTMLElement , currentWord: IWord){
+    constructor( parentNode: HTMLElement , currentWord: IWord, learnedNumber: number, userWord?: IUserWord | null){
         super(parentNode, 'div', ['wordContainer'])
 
         this.wordImage = new Image(
@@ -71,19 +71,27 @@ export class Word extends Component {
 
         this.learnTracker1 = new Span(
             this.trackerContainer.element,
-            ['learnTracker1'],
+            ['learnTracker1','learnTracker'],
             ''
         )
         this.learnTracker2 = new Span(
             this.trackerContainer.element,
-            ['learnTracker2'],
+            ['learnTracker2','learnTracker'],
             ''
         )
         this.learnTracker3 = new Span(
             this.trackerContainer.element,
-            ['learnTracker3'],
+            ['learnTracker3','learnTracker'],
             ''
         )
+        learnedNumber > 0 ? this.learnTracker1.element.classList.add('active') : null
+        learnedNumber > 1 ? this.learnTracker2.element.classList.add('active') : null
+        learnedNumber > 2 ? this.learnTracker3.element.classList.add('active') : null    
+        if(userWord !== null) {
+            userWord?.optional.learned! > 0 ? this.learnTracker1.element.classList.add('active') : null
+            userWord?.optional.learned! > 1 ? this.learnTracker2.element.classList.add('active') : null
+            userWord?.optional.learned! > 2 ? this.learnTracker3.element.classList.add('active') : null    
+        }
 
         this.wordName = new Paragraph(
             this.element,

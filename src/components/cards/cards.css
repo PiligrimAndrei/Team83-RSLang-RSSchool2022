@@ -9,6 +9,7 @@
 }
 .cardContainer {
     width: 125px;
+    height: 120px;
     display: flex;
     flex-direction: column;
     background-color: var(--color-card);
@@ -37,7 +38,14 @@
     background-color: var(--color-c2);
     font-weight: bold;
 }
-
+.cardContainer.activehard {
+    background-color: var(--color-hard);
+    font-weight: bold;
+}
+.cardContainer.activelearned {
+    background-color: var(--color-learned);
+    font-weight: bold;
+}
 .wordNameCard {
     color: var(--second-text-color);
     font-size: var(--font-size-xs);

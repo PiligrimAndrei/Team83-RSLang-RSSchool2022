@@ -42,6 +42,7 @@ export const signIn = async (user: SignIn): Promise<ISignIn | null> => {
       body: JSON.stringify(user)
     });
   const res = await data.json();
+  console.log(res)
   if (data.status === RESPONSE.OK) {
     saveToken(res.token, res.refreshToken, res.userId);
     return res
@@ -79,7 +80,7 @@ export const fetchWithAutorization = async (url: string, options?: IFetchOptions
   const refreshToken = localStorage.getItem('refreshToken');
   const userId = localStorage.getItem('userId');
   const tokenDate = localStorage.getItem('tokenDate');
-  console.log(Date.now() - (Number(tokenDate)))
+  // console.log(Date.now() - (Number(tokenDate)))
   if (Date.now() - (Number(tokenDate)) <= 3600) {
     if (userId && refreshToken) {
       const newToken = getRefreshToken(userId, refreshToken)

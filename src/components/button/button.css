@@ -11,7 +11,7 @@ button {
     background-color: var(--color-card);
 }
 .hardWordsBtn:hover,
-.hardWordsBtn .active{
+.hardWordsBtn.active{
     background-color: var(--color-hard);
     color: var(--main-text-color);
     font-weight: 600;
@@ -22,7 +22,7 @@ button {
     background-color: var(--color-card);
 }
 .learnedWordsBtn:hover,
-.learnedWordsBtn .active{
+.learnedWordsBtn.active{
     background-color: var(--color-learned);
     color: var(--main-text-color);
     font-weight: 600;
@@ -33,7 +33,7 @@ button {
     background-color: var(--color-card);
 }
 .settingsBtn:hover,
-.settingsBtn .active{
+.settingsBtn.active{
     background-color: var(--color-settings);
     color: var(--main-text-color);
     font-weight: 600;

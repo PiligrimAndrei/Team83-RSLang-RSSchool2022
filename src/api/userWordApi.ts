@@ -3,7 +3,7 @@ import { fetchWithAutorization } from "./api";
 import { BASEURL } from "./consts";
 
 export const createUserWord = async (userId: string, wordId: string, word: IUserWord) => {
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const data = await fetchWithAutorization(`${BASEURL}/users/${userId}/words/${wordId}`, {
     method: 'POST',
     /*withCredentials: true,*/
@@ -19,7 +19,7 @@ export const createUserWord = async (userId: string, wordId: string, word: IUser
 };
 
 export const getUserWords = async (userId: string) => {
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const data = await fetchWithAutorization(`${BASEURL}/users/${userId}/words`, {
     method: 'GET',
     /*withCredentials: true,*/
@@ -34,7 +34,7 @@ export const getUserWords = async (userId: string) => {
 }
 
 export const updateUserWord = async (userId: string, wordId: string, word: IUserWord) => {
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const data = await fetchWithAutorization(`${BASEURL}/users/${userId}/words/${wordId}`, {
     method: 'PUT',
     /*withCredentials: true,*/
@@ -45,12 +45,15 @@ export const updateUserWord = async (userId: string, wordId: string, word: IUser
     },
     body: JSON.stringify(word)
   });
+  if(!data.ok) {
+    return false
+  }
   const content = await data.json();
   return (content)
 };
 
 export const getUserWord = async (userId: string, wordId: string) => {
-  const token = sessionStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const data = await fetchWithAutorization(`${BASEURL}/users/${userId}/words/${wordId}`, {
     method: 'GET',
     /*withCredentials: true,*/
@@ -61,6 +64,9 @@ export const getUserWord = async (userId: string, wordId: string) => {
     },
     
   });
+  if(!data.ok) {
+    return false
+  } 
   const content = await data.json();
   return(content)
 };
