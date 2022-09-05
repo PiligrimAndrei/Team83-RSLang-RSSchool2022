@@ -1,3 +1,5 @@
+@import "../../constants/root.css";
+
 .header {
   height: 120px;
   width: 100%;
@@ -17,10 +19,15 @@
 .nav__container {
   display: flex;
   align-items: center;
+  height: 40px;
 }
 
 .nav__item {
-  width: 110px;
+  width: 100px;
+  height: 100%;
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
   font-size: var(--font-size-xs);
@@ -32,7 +39,7 @@
 .nav__item--active{
   color: var(--accent-color);
   font-weight: bold;
-  text-decoration: underline;
+  border-bottom: 2px solid var(--accent-color);
 }
 .nav__item:hover{
   font-weight: bold;

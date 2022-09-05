@@ -7,6 +7,8 @@ import { AudioGameGuessCards } from "../audioGameGuessCards/audioGameGuessCards"
 import { audioGameStatistic } from '../audioGameStatistic/audioGameStatistic';
 import { getUserWord, updateUserWord, createUserWord } from '../../api/userWordApi';
 import { commonUserWord } from '../../constants/data';
+import correct from '../../assets/sounds/correct.mp3'
+import wrong from '../../assets/sounds/wrong.mp3'
 
 export class AudioGameMain extends Component {
   private audioGamePlaySound: Button;
@@ -118,9 +120,11 @@ export class AudioGameMain extends Component {
 
   changeStyles(button: HTMLButtonElement, correctWord: IWord): void {
     if (button.dataset.id === correctWord.id && button.classList.contains('audioGameCardButton')) {
+      new Audio(correct).play()
       button.classList.add('correct')
       this.audioGameCurrentCard.element.classList.add('correct');
     } else if ((button.dataset.id !== correctWord.id && button.classList.contains('audioGameCardButton')) || button.classList.contains('audioGameNextButton')){
+      new Audio(wrong).play()
       button.classList.add('wrong');
       this.audioGameCurrentCard.element.classList.add('wrong');
       let correctButton = this.audioGameGuessCards.audioGameGuessButtons.find(button => button.element.dataset.id === correctWord.id);

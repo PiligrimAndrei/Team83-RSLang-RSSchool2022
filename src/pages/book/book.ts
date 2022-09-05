@@ -20,7 +20,6 @@ export class Book extends Component {
     super(parentNode, 'div', ['book']);
 
     this.bookNavigation = new BookNavigation(this.element)
-    //this.bookCards = new BookCards(this.element, )
     this.bookPagination = new BookPagination(this.element)
     this.bookGames = new BookGames(this.element)
 
@@ -40,6 +39,9 @@ export class Book extends Component {
     let userPage = localStorage.getItem('onpage')
 
     if(target.dataset.button === 'hardword') {
+      if(localStorage.getItem('userdifficulty') === 'hard') {
+        return
+      }
       this.renderUserWords("hard")
       localStorage.setItem('pageNumber','0');
       localStorage.setItem('difficultyLevel','0');
@@ -48,6 +50,9 @@ export class Book extends Component {
       this.bookPagination.element.lastElementChild?.classList.add('disabled');
     }
     else if(target.dataset.button === 'learnedword') {
+      if(localStorage.getItem('userdifficulty') === 'learned') {
+        return
+      }
       this.renderUserWords("learned")
       localStorage.setItem('pageNumber','0');
       localStorage.setItem('difficultyLevel','0');
@@ -57,7 +62,7 @@ export class Book extends Component {
     }
     else if (target.dataset.button === `groupLevel`) {
         let difficultyLevel: number = Number(target.dataset.difficultyLevel);
-        if(difficultyLevel === LSdifficultyLevel){
+        if(difficultyLevel === LSdifficultyLevel && !localStorage.getItem('userdifficulty')){
           return
         }
         let response = await getWords(difficultyLevel);
@@ -74,6 +79,7 @@ export class Book extends Component {
         localStorage.setItem('pageNumber', `0`);
         numPage.innerHTML = `1`
         localStorage.setItem('currentCard', `0`);
+        localStorage.removeItem('userdifficulty');
 
     }
     else {

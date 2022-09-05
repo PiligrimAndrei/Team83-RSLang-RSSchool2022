@@ -4,9 +4,9 @@ export const DEVELOPERS = [
   {
     'fullname': 'Анастасия Халмаматова',
     'github': 'https://github.com/ansiahalm',
-    'image' : './assets/ansiahalm.png',
+    'image' : './assets/ansiahalm.jpg',
     'alt' : 'ansiahalm',
-    'about' : 'about',
+    'about' : 'Перспективный Junior-FE разработчик, с опытом работы над проектами разных уровней сложности и огромным дизайнерский бэкграундом',
   },
   {
     'fullname': 'Андрей Красько',
@@ -20,10 +20,9 @@ export const DEVELOPERS = [
     'github': 'https://github.com/danilahalm',
     'image' : './assets/danilahalm.jpg',
     'alt' : 'danilahalm',
-    'about' : 'about',
+    'about' : 'Уверенный Junior-FE разработчик, с большим потенциалом и не меньшим желанием изучать данную профессиюю. 30 лет',
   },
 ]
-
 
 export const ADVANTAGES_CARDS_CONTENT = [
   {
