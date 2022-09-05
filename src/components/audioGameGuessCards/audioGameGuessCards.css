@@ -1,0 +1,15 @@
+@import "../../constants/root.css";
+
+.audioGameGuessCards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 2;
+}
+.audioGameGuessContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

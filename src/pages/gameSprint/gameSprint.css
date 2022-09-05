@@ -1,0 +1,13 @@
+@import "../../constants/root.css";
+
+.gameSprint {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../assets/audioGameBG.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

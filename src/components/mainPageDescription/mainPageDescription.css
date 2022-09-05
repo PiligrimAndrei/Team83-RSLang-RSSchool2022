@@ -1,0 +1,32 @@
+@import '../../constants/root.css';
+
+.mainPageDescription {
+    position: relative;
+    height: 760px;
+}
+.descriptionText {
+    position: absolute;
+    width: 540px;
+    height: 260px;
+    top: 170px;
+    background: url(../../assets/mainTitle.png);
+    z-index: 3;
+}
+.descriptionImage {
+    position: absolute;
+    height: 700px;
+    width: auto;
+    top: 0;
+    right: 0;
+    z-index: 1;
+}
+.descriptionHeading {
+    padding: 50px 34px 30px;
+    font-family: var(--main-font-family);
+    font-size: var(--font-size-m);
+}
+.descriptionParagraph {
+    font-size: var(--font-size-s);
+    padding: 0 34px;
+}
+

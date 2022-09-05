@@ -1,0 +1,9 @@
+@import "../../constants/root.css";
+.gamesWindow {
+    margin: 0 auto 60px auto;
+    width: 900px;
+    display: grid;
+    grid-template-columns: repeat(6, 125px);
+    grid-template-rows: 40px 70px 300px;
+    gap: 30px;
+}

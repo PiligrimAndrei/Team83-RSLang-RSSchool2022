@@ -1,0 +1,74 @@
+@import '../../constants/root.css';
+
+
+.autotizationFields{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+}
+.autorizationTitle {
+    font-size: var(--font-size-m);
+    font-family:  var(--main-font-family);
+    padding-bottom: 60px;
+}
+.autorizationForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.inputEmail,
+.inputPassword ,
+.submitBtnAutorization{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 17px 25px;
+    width: 350px;
+    height: 60px;
+    font-family: inherit;
+    font-size: var(--font-size-s);
+    color: var(--second-text-color);
+    background-color: transparent;
+    background-clip: padding-box;
+    border: 2px solid var(--second-text-color);
+
+}
+.inputPassword {
+    margin: 30px 0;
+}
+.inputEmail:focus,
+.inputPassword:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px var(--accent-color);
+}
+.inputEmail::placeholder,
+.inputPassword::placeholder {
+    color: var(--main-font-family);
+}
+.submitBtnAutorization:hover {
+    font-weight: bold;
+    color: var(--main-text-color);
+    background-color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+}
+
+.textToSingUp {
+    height: 60px;
+    margin: auto 0;
+    display: flex;
+}
+.linkToSingUp {
+    padding-left: 5px;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: var(--font-size-s);
+    font-weight: bold;
+    color: var(--main-text-color);
+    cursor: pointer;
+}
+.linkToSingUp:hover {
+    text-decoration: underline;
+}
+

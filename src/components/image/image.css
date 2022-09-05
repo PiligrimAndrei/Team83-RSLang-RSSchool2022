@@ -1,0 +1,6 @@
+@import "../../constants/root.css";
+
+.currentCardImage {
+    width: 260px;
+    height: 270px;
+}

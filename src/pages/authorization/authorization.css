@@ -1,0 +1,4 @@
+.authorization{
+    height: calc(100vh - 120px - 135px);
+    background: linear-gradient(180deg, var(--main-bg-color) 0%, var(--accent-color) 100%);
+}

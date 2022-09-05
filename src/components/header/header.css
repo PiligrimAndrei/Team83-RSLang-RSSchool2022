@@ -1,0 +1,70 @@
+@import "../../constants/root.css";
+
+.header {
+  height: 120px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: var(--font-size-l);
+  text-align: center;
+  color: var(--main-text-color);
+}
+
+.nav__container {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.nav__item {
+  width: 100px;
+  height: 100%;
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: var(--font-size-xs);
+  align-items: center;
+  text-align: center;
+  color: var(--main-text-color);
+}
+
+.nav__item--active{
+  color: var(--accent-color);
+  font-weight: bold;
+  border-bottom: 2px solid var(--accent-color);
+}
+.nav__item:hover{
+  font-weight: bold;
+}
+
+.nav__button{
+  text-decoration: none;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 40px;
+  border: 2px solid var(--accent-color);
+}
+
+.nav__button:hover {
+  background-color: var(--accent-color);
+  color: white;
+  
+}
+
+.nav__button .nav__button--active{
+  background-color: var(--accent-color);
+  color: var(--main-text-color);
+  font-weight: bold;
+  color: white;
+}

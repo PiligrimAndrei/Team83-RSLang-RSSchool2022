@@ -1,0 +1,14 @@
+@import "../../constants/root.css";
+
+.SprintGameDescription {
+    position: absolute;
+    padding: 0 40px;
+    width: 530px;
+    height: 360px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 3;
+}

@@ -1,0 +1,17 @@
+@import "../../constants/root.css";
+
+.gamesWindowHeading {
+    color: var(--main-text-color);
+    font-size: var(--font-size-m);
+    grid-column: 1/7;
+    text-align: center;
+}
+
+.AudioGameHeading {
+    color: var(--main-text-color);
+    font-size: var(--font-size-m);
+}
+.audioGameStatisticHeading {
+    width: 100%;
+    text-align: center;
+}

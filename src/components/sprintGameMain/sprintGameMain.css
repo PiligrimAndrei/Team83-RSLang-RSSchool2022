@@ -1,0 +1,9 @@
+@import "../../constants/root.css";
+
+.sprintGameMain {
+    display: none;
+    width: 720px;
+    height: 370px;
+    background: rgba(0, 0, 0, 0.54);
+    justify-content: space-between;
+}
