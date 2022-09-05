@@ -1,0 +1,35 @@
+.correctWordContainer, .uncorrectWordContainer{
+  display: block;
+  margin-left: 0, 10px;
+  font-size: 16px;
+  color: #97D9E9;
+}
+
+.correctWords, .uncorrectWords {
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 160%;
+color: #FFFFFF;
+margin: 50px;
+}
+.correct_word, .uncorrect_word {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 18px;
+  line-height: 120%;
+  color: #FFFFFF;
+  margin: 10px;
+  }
+
+.modal_result{
+  position: absolute;
+  display:flex;
+  justify-content: center;
+  align-items: left;
+  width: 720px;
+  height: 370px;
+  background: rgba(0, 0, 0, 1);
+}
