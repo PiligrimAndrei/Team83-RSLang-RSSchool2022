@@ -58,7 +58,7 @@ export class ModalWindow extends Component {
       this.buttonContainer.element,
       'submit',
       ['button__yes'],
-      'ИГРАТЬ ЕЩЕ'
+      'ИГРАТЬ'
     );
 
     this.buttonNo = new Button(

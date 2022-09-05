@@ -31,7 +31,7 @@ export class GameSprintWindow extends Component {
   private wordsTag: Paragraph;
   private buttonYes: Button;
   private buttonNo: Button;
-  private timer: number = 5;
+  private timer: number = 60;
   private isValid: number = 0;
   private counterGood: number = 0;
   private guessWordId: IWord;
