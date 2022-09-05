@@ -41,7 +41,11 @@ export class GamesWindow extends Component {
       "Игра “АУДИОВЫЗОВ”"
     );
     this.linkToAudioGame.element.addEventListener('click', () => {
-      localStorage.setItem('fromWhereToStart','games')
+      localStorage.setItem('fromWhereToStart','games');
+      let header = document.querySelector(".header") as HTMLHeadElement;
+      let footer = document.querySelector(".footer") as HTMLDivElement;
+      header.style.display = 'none';
+      footer.style.display = 'none';
     })
 
     this.linkToSprintGame = new Link(
@@ -51,7 +55,11 @@ export class GamesWindow extends Component {
       "Игра “СПРИНТ”"
     );
     this.linkToSprintGame.element.addEventListener('click', () => {
-      localStorage.setItem('fromWhereToStart','games')
+      localStorage.setItem('fromWhereToStart','games');
+      let header = document.querySelector(".header") as HTMLHeadElement;
+      let footer = document.querySelector(".footer") as HTMLDivElement;
+      header.style.display = 'none';
+      footer.style.display = 'none';
     })
 
     this.langLevelBtns.map((button,index) => { 

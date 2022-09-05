@@ -2,8 +2,11 @@ import "./audioGameMain.css";
 import { Component } from "../components";
 import { AudioGameCurrentCard } from "../audioGameCurrentCard/audioGameCurrentCard";
 import { Button } from "../button/button";
-import { IWord } from "../../interfaces/interfaces";
+import { IWord, IPlayed, IUserWord } from '../../interfaces/interfaces';
 import { AudioGameGuessCards } from "../audioGameGuessCards/audioGameGuessCards";
+import { audioGameStatistic } from '../audioGameStatistic/audioGameStatistic';
+import { getUserWord, updateUserWord, createUserWord } from '../../api/userWordApi';
+import { commonUserWord } from '../../constants/data';
 
 export class AudioGameMain extends Component {
   private audioGamePlaySound: Button;
@@ -12,10 +15,17 @@ export class AudioGameMain extends Component {
   private audioGameGuessCards: AudioGameGuessCards;
   private chosedWords: string[];
   private correctWord: IWord;
+  private wordsPlayedInRound: Array<IPlayed>;
+  private audioGameStatistic: audioGameStatistic | undefined;
+  header: HTMLHeadElement | null;
 
   constructor(parentNode: HTMLElement, words: Array<IWord>) {
     super(parentNode, "div", ["AudioGameMain"]);
 
+    this.header = document.querySelector('.header')
+    this.header!.style.display = 'none'
+
+    this.wordsPlayedInRound = [];
     this.words = words;
     this.chosedWords = [];
 
@@ -31,14 +41,20 @@ export class AudioGameMain extends Component {
       this.element,
       this.correctWord
     );
+
     this.audioGameGuessCards = new AudioGameGuessCards(
       this.element,
       words.slice(0, 5),
       this.correctWord.id
     );
+
     this.audioGameGuessCards.element.onclick = this.showCurrentCard.bind(this);
+    this.audioGamePlaySound.element.onclick = this.playSound.bind(this);
   }
 
+  playSound() {
+    new Audio(`./${this.correctWord.audio}`).play()
+  }
   showCurrentCard(event: Event): void {
     const target = event.target as HTMLButtonElement;
     const targetCardId = target.dataset.id;
@@ -48,9 +64,67 @@ export class AudioGameMain extends Component {
       this.renderGuessCards(this.words);
     } else if (target.dataset.guess === "guess") {
       this.renderCurrentCard(this.correctWord);
+      this.changeStyles(target,this.correctWord);
+      this.sendToCurrentStatistic(target, this.correctWord);
       this.audioGamePlaySound.element.style.display = "none";
       this.audioGameCurrentCard.element.style.display = "flex";
       this.chosedWords.push(targetCardId!);
+    }
+  }
+
+  sendToCurrentStatistic(button: HTMLButtonElement, correctWord: IWord) {
+    if (button.dataset.id === correctWord.id && button.classList.contains('audioGameCardButton')) {
+      this.wordsPlayedInRound.push({id: correctWord.id , word: correctWord.word, guessed: true, transcription: correctWord.transcription, translate: correctWord.wordTranslate})
+    } else if ((button.dataset.id !== correctWord.id && button.classList.contains('audioGameCardButton')) || button.classList.contains('audioGameNextButton')){
+      this.wordsPlayedInRound.push({id: correctWord.id , word: correctWord.word, guessed: false, transcription: correctWord.transcription, translate: correctWord.wordTranslate})
+    }
+  }
+
+  async sendToUserWordStatistic(words: Array<IPlayed>) {
+    let userId = localStorage.getItem('userId');
+    console.log(words)
+    if (userId){ 
+      for (let word of words) {
+        const getResponse = await getUserWord(userId, word.id);
+        if(getResponse) {
+          let body = Object.assign({}, getResponse);
+          body.optional.countUseAudiocall += 1
+          body.optional.countUse += 1;
+          if(word.guessed){
+            body.optional.countCorrectAudiocall += 1
+            body.optional.learned += 1
+            body.optional.learned >= 3 ? body.difficulty = 'easy' : null
+          } else {
+            body.optional.learned = 0
+          }
+          delete body.id;
+          delete body.wordId;
+          const updateResponce = updateUserWord(userId,word.id,body);
+        } else {
+          let newWord = Object.assign({},commonUserWord);
+          newWord.optional.countUseAudiocall = 1
+          newWord.optional.countUse! += 1;
+          if (word.guessed) {
+            newWord.optional.learned += 1 
+            newWord.optional.countCorrectAudiocall = 1
+          } else {
+            newWord.optional.countCorrectAudiocall = 0
+          }
+          const createResponse = createUserWord(userId,word.id,newWord)
+        }
+      }
+    }
+  }
+
+  changeStyles(button: HTMLButtonElement, correctWord: IWord): void {
+    if (button.dataset.id === correctWord.id && button.classList.contains('audioGameCardButton')) {
+      button.classList.add('correct')
+      this.audioGameCurrentCard.element.classList.add('correct');
+    } else if ((button.dataset.id !== correctWord.id && button.classList.contains('audioGameCardButton')) || button.classList.contains('audioGameNextButton')){
+      button.classList.add('wrong');
+      this.audioGameCurrentCard.element.classList.add('wrong');
+      let correctButton = this.audioGameGuessCards.audioGameGuessButtons.find(button => button.element.dataset.id === correctWord.id);
+      correctButton?.element.classList.add('correct')
     }
   }
 
@@ -72,9 +146,11 @@ export class AudioGameMain extends Component {
       fiveWordsToRender.push(nextWord);
       this.shuffleWords(fiveWordsToRender);
     }
-    if (this.chosedWords.length === 20) {
-      this.audioGameGuessCards.element.style.display = "none";
-      this.audioGamePlaySound.element.style.display = "none";
+    if (this.chosedWords.length === words.length) {
+      this.audioGameGuessCards.destroy()
+      this.audioGamePlaySound.destroy()    
+      this.audioGameStatistic = new audioGameStatistic(this.element, this.wordsPlayedInRound)  
+      this.sendToUserWordStatistic(this.wordsPlayedInRound)
     } else {
       this.audioGameGuessCards.destroy();
       this.audioGameGuessCards = new AudioGameGuessCards(

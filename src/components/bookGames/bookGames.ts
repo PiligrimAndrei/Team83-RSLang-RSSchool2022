@@ -24,7 +24,11 @@ export class BookGames extends Component{
             `Игра\n"АУДИОВЫЗОВ"`
         )
         this.titleAudioCall.element.addEventListener('click', () => {
-            localStorage.setItem('fromWhereToStart','book')
+            localStorage.setItem('fromWhereToStart','book');
+            let header = document.querySelector(".header") as HTMLHeadElement;
+            let footer = document.querySelector(".footer") as HTMLDivElement;
+            header.style.display = 'none';
+            footer.style.display = 'none';
         })
 
         this.gameContainer2 = new Component(
@@ -40,7 +44,11 @@ export class BookGames extends Component{
             `Игра\n"СПРИНТ"`
         )
         this.titleSprint.element.addEventListener('click', () => {
-            localStorage.setItem('fromWhereToStart','book')
+            localStorage.setItem('fromWhereToStart','book');
+            let header = document.querySelector(".header") as HTMLHeadElement;
+            let footer = document.querySelector(".footer") as HTMLDivElement;
+            header.style.display = 'none';
+            footer.style.display = 'none';
         })
     }
 }

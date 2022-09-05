@@ -1,0 +1,29 @@
+@import "../../constants/root.css";
+
+.audioGameTableCorrect,
+.audioGameTableWrong {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.audioGameTableCorrect {
+    border-right: 2px solid var(--accent-color);
+}
+.audioGameTableCorrectHead,
+.audioGameTableWrongHead,
+.audioGameWord {
+    min-height: 20px;
+    width: 100%;
+}
+.audioGameTableCorrectHead,
+.audioGameTableWrongHead {
+    border-bottom: 2px solid var(--accent-color);
+}
+.audioGameWord {
+    border-bottom: 2px dotted var(--accent-color);
+}
+.audioGameTableCorrectHead,
+.audioGameTableWrongHead {
+    display: flex;
+    justify-content: center;
+}

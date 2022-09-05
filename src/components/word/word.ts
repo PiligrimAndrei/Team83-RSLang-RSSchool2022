@@ -28,14 +28,17 @@ export class Word extends Component {
     private popupTitle: Paragraph;
     private popupCorrectCount: Paragraph;
     private popupErrorCount: Paragraph;
+    private audio: string;
 
     constructor( parentNode: HTMLElement , currentWord: IWord, learnedNumber: number, userWord?: IUserWord | null){
         super(parentNode, 'div', ['wordContainer'])
 
+        this.audio = currentWord.audio
+        
         this.wordImage = new Image(
             this.element,
             ['wordImage'],
-            currentWord.image,
+            `./${currentWord.image}`,
             'wordImage'
         )
         
@@ -153,7 +156,12 @@ export class Word extends Component {
             ['wordExampleTranslation'],
             currentWord.textExampleTranslate
         )
+
+        this.wordPronunciationImage.element.onclick = this.playSound.bind(this)
     }
 
+    playSound() {
+        new Audio(`./${this.audio}`).play()
+    }
 }
 

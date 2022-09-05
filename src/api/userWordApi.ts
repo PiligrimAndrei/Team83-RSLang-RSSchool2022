@@ -62,7 +62,6 @@ export const getUserWord = async (userId: string, wordId: string) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-
   });
   if(!data.ok) {
     return false

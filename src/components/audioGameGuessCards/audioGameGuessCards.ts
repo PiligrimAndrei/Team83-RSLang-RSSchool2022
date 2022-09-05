@@ -7,7 +7,7 @@ import { IWord } from "../../interfaces/interfaces";
 export class AudioGameGuessCards extends Component {
   private audioGameCardButton: Button | undefined;
   private audioGameNextButton: Button;
-  private audioGameGuessButtons: Array<Button>;
+  public audioGameGuessButtons: Array<Button>;
   private audioGameGuessContainer: Component;
 
   constructor(
