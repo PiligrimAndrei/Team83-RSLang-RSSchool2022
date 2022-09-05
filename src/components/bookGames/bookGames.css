@@ -15,23 +15,25 @@
 
 }
 
-.sprintGame .active,
-.audioCallGame .active,
-.sprintGame:hover,
-.audioCallGame:hover {
-    height: 100%;
-    width: 430px;
-    background-color: var(--color-card);
-    border: solid 10px var(--accent-color);
-}
+
 .sprintGame{
     margin-left: 35px;
 }
 
 .titleGame{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     font-family: 'Open Sans', sans-serif;
     font-size: var(--font-size-l);
-    color: var(--second-text-color);
+    color: var(--inactive-text-color);
     margin: auto 0;    
+}
+.titleGame:hover {
+    background-color: #FFFFFF;
+    border: solid 10px var(--accent-color);
+    color: var(--second-text-color);
 }

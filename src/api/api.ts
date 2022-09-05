@@ -32,7 +32,7 @@ export const getWord = async (wordID: string): Promise<IWord | null> => {
 }
 
 export const signIn = async (user: SignIn): Promise<ISignIn | null> => {
-  try {
+try {
     const data = await fetch(`${BASEURL}/signin`,
       {
         method: 'POST',
@@ -88,8 +88,10 @@ export const fetchWithAutorization = async (url: string, options?: IFetchOptions
   const refreshToken = localStorage.getItem('refreshToken');
   const userId = localStorage.getItem('userId');
   const tokenDate = localStorage.getItem('tokenDate');
+
   console.log('СРОК ТОКЕНА', (Date.now() - (Number(tokenDate))) / 3600000)
   if (Date.now() - (Number(tokenDate)) >= 3600000) {
+
     if (userId && refreshToken) {
       const newToken = await getRefreshToken(userId, refreshToken).then(() => {
         console.log('NewToken', newToken)
