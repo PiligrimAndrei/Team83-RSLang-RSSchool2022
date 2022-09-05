@@ -4,23 +4,23 @@ export const DEVELOPERS = [
   {
     'fullname': 'Анастасия Халмаматова',
     'github': 'https://github.com/ansiahalm',
-    'image' : './assets/ansiahalm.png',
-    'alt' : 'ansiahalm',
-    'about' : 'about',
+    'image': './assets/ansiahalm.png',
+    'alt': 'ansiahalm',
+    'about': 'about',
   },
   {
     'fullname': 'Андрей Красько',
     'github': 'https://github.com/piligrimandrei',
-    'image' : './assets/piligrimandrei.png',
-    'alt' : 'piligrimandrei',
-    'about' : 'about',
+    'image': './assets/AndreiKrasko.jpg',
+    'alt': 'piligrimandrei',
+    'about': 'about',
   },
   {
     'fullname': 'Данила Халмаматов',
     'github': 'https://github.com/danilahalm',
-    'image' : './assets/danilahalm.jpg',
-    'alt' : 'danilahalm',
-    'about' : 'about',
+    'image': './assets/danilahalm.jpg',
+    'alt': 'danilahalm',
+    'about': 'about',
   },
 ]
 
@@ -53,9 +53,9 @@ export let WORD_POPUP_ERROR_COUNT = 0
 
 export const MAX_CARDS_ON_PAGE = 20
 
-export const DIFFICULTIES = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] 
+export const DIFFICULTIES = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
 
-export const MAX_CARDS_ON_AUDIOGAME = 5 
+export const MAX_CARDS_ON_AUDIOGAME = 5
 
 export const MAX_DESCRIPTION_FIELDS_ON_CARD = 3
 
