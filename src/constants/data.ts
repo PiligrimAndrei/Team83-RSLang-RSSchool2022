@@ -4,23 +4,23 @@ export const DEVELOPERS = [
   {
     'fullname': 'Анастасия Халмаматова',
     'github': 'https://github.com/ansiahalm',
-    'image' : './assets/ansiahalm.jpg',
-    'alt' : 'ansiahalm',
-    'about' : 'Перспективный Junior-FE разработчик, с опытом работы над проектами разных уровней сложности и огромным дизайнерский бэкграундом',
+    'image': './assets/ansiahalm.jpg',
+    'alt': 'ansiahalm',
+    'about': 'Перспективный Junior-FE разработчик, с опытом работы над проектами разных уровней сложности и огромным дизайнерский бэкграундом',
   },
   {
     'fullname': 'Андрей Красько',
     'github': 'https://github.com/piligrimandrei',
-    'image' : './assets/piligrimandrei.png',
-    'alt' : 'piligrimandrei',
-    'about' : 'about',
+    'image': './assets/AndreiKrasko.jpg',
+    'alt': 'piligrimandrei',
+    'about': 'Junior-FE разработчик. Знания Node.js, MySQL. Team lead команды.',
   },
   {
     'fullname': 'Данила Халмаматов',
     'github': 'https://github.com/danilahalm',
-    'image' : './assets/danilahalm.jpg',
-    'alt' : 'danilahalm',
-    'about' : 'Уверенный Junior-FE разработчик, с большим потенциалом и не меньшим желанием изучать данную профессиюю. 30 лет',
+    'image': './assets/danilahalm.jpg',
+    'alt': 'danilahalm',
+    'about': 'Уверенный Junior-FE разработчик, с большим потенциалом и не меньшим желанием изучать данную профессиюю. 30 лет',
   },
 ]
 
@@ -52,9 +52,9 @@ export let WORD_POPUP_ERROR_COUNT = 0
 
 export const MAX_CARDS_ON_PAGE = 20
 
-export const DIFFICULTIES = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] 
+export const DIFFICULTIES = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
 
-export const MAX_CARDS_ON_AUDIOGAME = 5 
+export const MAX_CARDS_ON_AUDIOGAME = 5
 
 export const MAX_DESCRIPTION_FIELDS_ON_CARD = 3
 
@@ -80,7 +80,7 @@ export const STATISTIC_CONTENT = [
 ]
 
 export let commonUserWord: IUserWord = {
-  difficulty: "easy", 
+  difficulty: "easy",
   optional: {
     learned: 0,
     countUse: 0,
