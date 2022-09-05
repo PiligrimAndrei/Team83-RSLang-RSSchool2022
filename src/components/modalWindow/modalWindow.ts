@@ -4,6 +4,7 @@ import { IWord, IWordStaticGame } from "../../interfaces/interfaces";
 import { Component } from "../components";
 import { Span } from "../span/span";
 import '../modalWindow/modalWindow.css'
+import { Button } from "../button/button";
 
 export class ModalWindow extends Component {
   private counterCorrectWords: Component;
@@ -14,6 +15,10 @@ export class ModalWindow extends Component {
   private uncorrectWordContainer?: Component;
   private uncorrectWord?: Span;
   private uncorrectWordTranslate?: Span;
+  private buttonYes: Button;
+  private buttonNo: Button;
+  private buttonContainer: Component;
+
 
   constructor(parentNode: HTMLElement, arrayWords: Array<IWordStaticGame>) {
     super(parentNode, 'div', ['modal_result']);
@@ -30,23 +35,7 @@ export class ModalWindow extends Component {
         const word = this.getCorrectWordForResult(arrayWords[i].word.id)
       }
     }
-    /*
-    this.correctWordContainer = new Component(
-      this.counterCorrectWords.element,
-      TAG.div,
-      ["correctWordContainer"]
-    )
-    
-    this.correctWord = new Span(
-      this.counterCorrectWords.element,
-      ['correct_word'],
-      ''
-    )
-    this.correctWordTranslate = new Span(
-      this.counterCorrectWords.element,
-      [],
-      ''
-    )*/
+
     this.counterUncorrectWords = new Component(
       this.element,
       TAG.div,
@@ -59,21 +48,38 @@ export class ModalWindow extends Component {
         const word = this.getUncorrectWordForResult(arrayWords[i].word.id)
       }
     }
-    /*this.uncorrectWordContainer = new Component(
-      this.counterCorrectWords.element,
+    this.buttonContainer = new Component(
+      this.element,
       TAG.div,
-      ["correctWordContainer"]
+      ['button__container']
     )
-    this.uncorrectWord = new Span(
-      this.counterCorrectWords.element,
-      ['uncorrect_word'],
-      ''
-    )
-    this.uncorrectWordTranslate = new Span(
-      this.counterCorrectWords.element,
-      [],
-      ''
-    )*/
+
+    this.buttonYes = new Button(
+      this.buttonContainer.element,
+      'submit',
+      ['button__yes'],
+      'ИГРАТЬ ЕЩЕ'
+    );
+
+    this.buttonNo = new Button(
+      this.buttonContainer.element,
+      'submit',
+      ['button__no'],
+      'ВЫХОД'
+    );
+
+    this.buttonYes.element.addEventListener('click', () => {
+      this.destroy()
+      window.location.hash = '/'
+      window.location.hash = '/game_sprint'
+    })
+
+    this.buttonNo.element.addEventListener('click', () => {
+      this.destroy()
+      window.location.hash = '/'
+      window.location.hash = '/games'
+    })
+
   }
 
   public async getCorrectWordForResult(wordId: string): Promise<string> {

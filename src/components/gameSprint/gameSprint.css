@@ -1,15 +1,16 @@
 .game_sprint_window{
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   margin: 0 auto;
-  width: 100%;
+  width: 720px;
   justify-content: center;
   align-items: center;
 }
 
 .timerContainer{
   margin-top: 5px;
-}
+} 
 
 .timer{
 font-family: 'Open Sans';
