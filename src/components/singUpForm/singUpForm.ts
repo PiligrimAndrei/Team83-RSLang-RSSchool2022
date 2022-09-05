@@ -75,7 +75,7 @@ export class SingUpForm extends Component {
             ['linkToSingIn'],
             ' Войти'
         )
-        this.inputPassword.element.setAttribute('pattern', '^(?=.*\d)(?=.*[a-zA-Z]).{8,}$')
+        this.inputPassword.element.setAttribute('pattern', '[a-zA-Z0-9]{8,}')
         this.formRegistration.element.addEventListener('submit', this.submitFormRegistration)
     }
 
