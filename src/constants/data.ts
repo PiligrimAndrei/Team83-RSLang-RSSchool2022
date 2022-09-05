@@ -13,7 +13,7 @@ export const DEVELOPERS = [
     'github': 'https://github.com/piligrimandrei',
     'image': './assets/piligrimandrei.png',
     'alt': 'piligrimandrei',
-    'about': 'Team lead команды. Реализовал API, backend, autorization, игру Спринт. В IT первый опыт обучения с "нуля"',
+    'about': 'Team lead команды. Реализовал API, backend, autorization, игру Спринт.',
   },
   {
     'fullname': 'Данила Халмаматов',
