@@ -5,8 +5,13 @@
     width: 530px;
     height: 270px;
     flex-direction: row;
-    border: 2px solid var(--color-c2); 
     order: 1;
+}
+.audioGameCurrentCard.wrong {
+    border: 2px solid var(--color-c2); 
+}
+.audioGameCurrentCard.correct {
+    border: 2px solid var(--accent-color); 
 }
 .currentCardDescription {
     padding-left: 10px;

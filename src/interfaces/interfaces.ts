@@ -78,3 +78,11 @@ export interface IWordStaticGame {
   correct: boolean;
   date: number;
 }
+
+export interface IPlayed {
+  id: string;
+  word: string;
+  guessed: Boolean;
+  transcription: string;
+  translate: string;
+}

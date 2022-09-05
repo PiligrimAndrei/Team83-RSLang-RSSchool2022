@@ -28,6 +28,13 @@ export class GameSprintPage extends Component {
     this.startButton = this.SprintGameStartWrapper.element
       .lastElementChild as HTMLElement;
     this.startButton.onclick = this.startGame.bind(this);
+
+    this.SprintGameCloseLink.element.addEventListener('click', () => {
+      let header = document.querySelector(".header") as HTMLHeadElement;
+      let footer = document.querySelector(".footer") as HTMLDivElement;
+      header.style.display = 'flex';
+      footer.style.display = 'flex';
+    })
   }
   hideStartWrapper() {
     this.SprintGameStartWrapper.element.style.display = "none";

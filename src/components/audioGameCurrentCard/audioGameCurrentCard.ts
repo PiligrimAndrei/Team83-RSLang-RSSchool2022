@@ -12,15 +12,18 @@ export class AudioGameCurrentCard extends Component {
   private currentCardDescriptionWord: Paragraph;
   private currentCardDescriptionTranscription: Paragraph;
   private currentCardDescriptionTranslate: Paragraph;
+  private correctWord: IWord;
 
   constructor(parentNode: HTMLElement, correctWord: IWord) {
     super(parentNode, "div", ["audioGameCurrentCard"]);
     this.currentCardImage = new Image(
       this.element,
       ["currentCardImage"],
-      correctWord.image,
+      `./${correctWord.image}`,
       "word"
     );
+    
+    this.correctWord = correctWord
 
     this.currentCardDescription = new Component(this.element, "div", [
       "currentCardDescription",
@@ -50,5 +53,11 @@ export class AudioGameCurrentCard extends Component {
       ["currentCardDescriptionField", "currentCardDescriptionTranslate"],
       correctWord.wordTranslate
     );
+
+    this.currentCardAudioButton.element.onclick = this.playSound.bind(this)
+  }
+
+  playSound() {
+    new Audio(`./${this.correctWord.audio}`).play()
   }
 }
