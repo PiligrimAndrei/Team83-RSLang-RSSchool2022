@@ -67,6 +67,7 @@ function saveToken(token: string, refreshToken: string, userId: string) {
 }
 
 export const getRefreshToken = async (userId: string, refreshToken: string) => {
+  console.log('ЗАПУСК РЕФРЕШТОКЕНА', refreshToken, userId)
   const data = await fetch(`${BASEURL}/users/${userId}/tokens`, {
     method: 'GET',
     /*withCredentials: true,*/
@@ -77,6 +78,7 @@ export const getRefreshToken = async (userId: string, refreshToken: string) => {
     }
   });
   const content = await data.json();
+  console.log('ТОКЕН ДО', refreshToken, 'ТОКЕН ПОСЛЕ', content.refreshToken)
   saveToken(content.token, content.refreshToken, userId)
   return content.token
 }
@@ -86,18 +88,22 @@ export const fetchWithAutorization = async (url: string, options?: IFetchOptions
   const refreshToken = localStorage.getItem('refreshToken');
   const userId = localStorage.getItem('userId');
   const tokenDate = localStorage.getItem('tokenDate');
-  // console.log(Date.now() - (Number(tokenDate)))
-  if (Date.now() - (Number(tokenDate)) <= 3600) {
+
+  console.log('СРОК ТОКЕНА', (Date.now() - (Number(tokenDate))) / 3600000)
+  if (Date.now() - (Number(tokenDate)) >= 3600000) {
+
     if (userId && refreshToken) {
-      const newToken = getRefreshToken(userId, refreshToken)
-      if (options) {
-        options.headers.Authorization = `Bearer ${newToken}`;
-        console.log('NewToken', token)
-      } else {
-        const newToken = token;
-      }
+      const newToken = await getRefreshToken(userId, refreshToken).then(() => {
+        console.log('NewToken', newToken)
+        if (options) {
+          options.headers.Authorization = `Bearer ${newToken}`;
+        } else {
+          const newToken = token;
+        }
+      })
     }
   }
+  console.log('НОВЫЙ ФЕТЧ', url, options)
   return fetch(url, options);
 }
 //TODO methods post, put,etc. need validate

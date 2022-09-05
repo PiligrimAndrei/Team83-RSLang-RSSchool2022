@@ -13,11 +13,10 @@ import wrong from '../../assets/sounds/wrong.mp3'
 import { Word } from "../word/word";
 import { touchRippleClasses } from "@mui/material";
 
-
 export class GameSprintWindow extends Component {
   private words: IWord[];
   private timerTag: Span;
-  private counterContainer: Component;
+  private timerContainer: Component;
   private scoreWordTag: Paragraph;
   private scoreWord: number = 10;
   private totalScoreTag: Paragraph;
@@ -32,27 +31,28 @@ export class GameSprintWindow extends Component {
   private wordsTag: Paragraph;
   private buttonYes: Button;
   private buttonNo: Button;
-  private timer: number = 20;
+  private timer: number = 5;
   private isValid: number = 0;
   private counterGood: number = 0;
   private guessWordId: IWord;
   private arrayStaticWords: Array<IWordStaticGame>;
-  private modalWindow: ModalWindow;
+  private modalWindow: ModalWindow | null;
+  private preparent: HTMLElement;
 
   constructor(parentNode: HTMLElement, words: Array<IWord>) {
     super(parentNode, 'div', ['game_sprint_window']);
-
+    this.preparent = parentNode;
     this.words = words;
 
-    this.counterContainer = new Component(
+    this.timerContainer = new Component(
       this.element,
       "div",
-      ["counterConteiner"]
+      ["timerContainer"]
     );
     this.timerTag = new Span(
-      this.counterContainer.element,
+      this.timerContainer.element,
       ["timer"],
-      '60'
+      this.timer.toString()
     );
     this.scoreContainer = new Component(
       this.element,
@@ -143,10 +143,7 @@ export class GameSprintWindow extends Component {
     this.arrayStaticWords = [{ word: this.guessWordId, correct: true, date: 0 }];
     this.SetTimer();
     this.nextWord();
-    this.modalWindow = new ModalWindow(
-      this.element,
-      this.arrayStaticWords
-    )
+    this.modalWindow = null
 
     this.buttonYes.element.addEventListener('click', () => {
       if (this.isValid) {
@@ -182,12 +179,10 @@ export class GameSprintWindow extends Component {
   }
 
   public SetTimer() {
-    console.log('Таймер ЗАПУЩЕН', this.timer);
     let interval = setInterval(() => {
       let timeoff = interval;
       this.GoTimer(timeoff)
     }, 1000)
-    console.log('Интервал', interval)
     return interval
   }
 
@@ -197,15 +192,17 @@ export class GameSprintWindow extends Component {
       this.renderTimer(this.timer)
     } else {
       clearInterval(interval);
-      this.onFinish();
+      console.log('РЕЗУЛЬТАТ', this.arrayStaticWords)
+      this.modalWindow = new ModalWindow(
+        this.preparent,
+        this.arrayStaticWords.slice(1)
+      )
     }
   }
 
-
-
   public setCounterGood(counter: number): void {
     this.counterGood = counter;
-    console.log('SetCounter', counter, (counter !== 0 && counter % 3 == 0))
+    //console.log('SetCounter', counter, (counter !== 0 && counter % 3 == 0))
     if (counter == 0) {
       this.scoreWord = 10;
       this.renderWordScore(this.scoreWord)
@@ -234,16 +231,16 @@ export class GameSprintWindow extends Component {
     this.renderWordScore(counter)
   }
 
-  public async getWordsForGame(group: number, page: number): Promise<IWord[] | null> {
-    const data = await getWords(group, page);
-    if (data) {
-      const wordArr: Array<IWord> = data.words
-      return wordArr;
-    }
-    return null
-  }
+  /* public async getWordsForGame(group: number, page: number): Promise<IWord[] | null> {
+     const data = await getWords(group, page);
+     if (data) {
+       const wordArr: Array<IWord> = data.words
+       return wordArr;
+     }
+     return null
+   }*/
   public nextWord() {
-    console.log('Слова', this.words)
+    //console.log('Слова', this.words)
     //this.getWordsForGame(this.group, this.page,).then((wordsArr) => {
     let wordsArr = this.words
     const random = Math.random();
@@ -266,7 +263,6 @@ export class GameSprintWindow extends Component {
         }
       }
       if (userId) {
-        /*createUserWord(userId, randomWord.id, word)*/
         getUserWords(userId)
         this.renderWords(guessWord, guessTranslateWord)
       } else window.location.hash = '/autorization'
@@ -294,7 +290,7 @@ export class GameSprintWindow extends Component {
 
   public renderCounterBar(counter: Number) {
     const counterBar = document.querySelectorAll('.progress__bar')
-    console.log('counter', counter)
+    //console.log('counter', counter)
     if (counter > 0) {
       for (let i = 0; i < 3; i++) {
         counterBar[i].classList.remove('active')
@@ -326,11 +322,11 @@ export class GameSprintWindow extends Component {
     }
   }
 
-  public onFinish() {
+  /*public onFinish() {
     this.modalWindow = new ModalWindow(
-      this.counterContainer.element,
-      this.arrayStaticWords
+      this.preparent,
+      this.arrayStaticWords.slice(1)
     )
-    return this.modalWindow
-  }
+  }*/
 }
+

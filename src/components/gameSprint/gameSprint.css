@@ -6,6 +6,11 @@
   justify-content: center;
   align-items: center;
 }
+
+.timerContainer{
+  margin-top: 5px;
+}
+
 .timer{
 font-family: 'Open Sans';
 font-style: normal;
