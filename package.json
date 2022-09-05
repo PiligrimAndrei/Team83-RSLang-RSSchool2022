@@ -1,7 +1,7 @@
 {
-  "name": "async-race-app",
+  "name": "rslang",
   "version": "1.0.0",
-  "description": "async-race-app for rs-school",
+  "description": "rslang for rs-school",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PiligrimAndrei/async-race.git"
+    "url": "git+https://github.com/PiligrimAndrei/rslang.git"
   },
   "author": "Andrei Krasko",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PiligrimAndrei/async-race/issues"
+    "url": "https://github.com/PiligrimAndrei/rslang/issues"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.22.0",
@@ -26,15 +26,12 @@
     "css-loader": "^5.2.4",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
-    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.4.0",
     "eslint-webpack-plugin": "^2.5.4",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",
     "postcss-loader": "^5.3.0",
-    "prettier": "^2.3.0",
     "sass": "^1.32.12",
     "sass-loader": "^11.0.1",
     "sass-resources-loader": "^2.2.1",
@@ -48,7 +45,7 @@
     "> 1%",
     "last 2 versions"
   ],
-  "homepage": "https://github.com/PiligrimAndrei/async-race#readme",
+  "homepage": "https://github.com/PiligrimAndrei/rslang",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",

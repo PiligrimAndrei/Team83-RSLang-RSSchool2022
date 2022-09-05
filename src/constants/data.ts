@@ -4,23 +4,23 @@ export const DEVELOPERS = [
   {
     'fullname': 'Анастасия Халмаматова',
     'github': 'https://github.com/ansiahalm',
-    'image' : './assets/ansiahalm.jpg',
-    'alt' : 'ansiahalm',
-    'about' : 'Перспективный Junior-FE разработчик, с опытом работы над проектами разных уровней сложности и огромным дизайнерский бэкграундом',
+    'image': './assets/ansiahalm.jpg',
+    'alt': 'ansiahalm',
+    'about': 'Перспективный Junior-FE разработчик, с опытом работы над проектами разных уровней сложности и огромным дизайнерский бэкграундом',
   },
   {
     'fullname': 'Андрей Красько',
     'github': 'https://github.com/piligrimandrei',
-    'image': './assets/piligrimandrei.png',
+    'image': './assets/AndreiKrasko.jpg',
     'alt': 'piligrimandrei',
-    'about': 'Team lead команды. Реализовал API, backend, autorization, игру Спринт.',
+    'about': 'Junior-FE разработчик. Знания Node.js, MySQL. Team lead команды.',
   },
   {
     'fullname': 'Данила Халмаматов',
     'github': 'https://github.com/danilahalm',
-    'image' : './assets/danilahalm.jpg',
-    'alt' : 'danilahalm',
-    'about' : 'Уверенный Junior-FE разработчик, с большим потенциалом и не меньшим желанием изучать данную профессиюю. 30 лет',
+    'image': './assets/danilahalm.jpg',
+    'alt': 'danilahalm',
+    'about': 'Уверенный Junior-FE разработчик, с большим потенциалом и не меньшим желанием изучать данную профессиюю. 30 лет',
   },
 ]
 
